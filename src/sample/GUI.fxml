@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<<<<<<< HEAD
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="521.0" layoutY="355.0" mnemonicParsing="false" text="Button" />
-=======
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,6 +19,5 @@
       <TextField layoutX="622.0" layoutY="360.0" prefHeight="31.0" prefWidth="257.0" />
       <TextField layoutX="845.0" layoutY="490.0" prefHeight="31.0" prefWidth="257.0" />
       <TextField layoutX="845.0" layoutY="580.0" prefHeight="31.0" prefWidth="257.0" />
->>>>>>> e754241c7027cdf352e6eb5f0bf7f0c06349c9a1
    </children>
 </AnchorPane>

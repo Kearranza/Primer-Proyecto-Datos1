@@ -14,7 +14,6 @@ public class MonstersTECG extends Application {
         loginStage.setTitle("MonstersTECG");
         root.setId("pane");
         Scene scene = new Scene(root, 1280, 720);
-        //scene.getStylesheets().addAll(this.getClass().getResource("loginFondo.css").toExternalForm());
         loginStage.setScene(scene);
         loginStage.show();
     }
