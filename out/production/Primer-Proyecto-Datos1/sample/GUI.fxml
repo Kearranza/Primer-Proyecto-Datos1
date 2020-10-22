@@ -13,11 +13,11 @@
             <Image url="@Imagenes/Fondos/LoginFondo.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btunirse" layoutX="528.0" layoutY="521.0" mnemonicParsing="false" onAction="#clickUnirse" prefHeight="31.0" prefWidth="103.0" text="Unirse" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="528.0" AnchorPane.rightAnchor="649.0" AnchorPane.topAnchor="521.0" />
-      <Button layoutX="382.0" layoutY="521.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Host" />
-      <TextField layoutX="622.0" layoutY="254.0" prefHeight="31.0" prefWidth="257.0" />
-      <TextField layoutX="622.0" layoutY="360.0" prefHeight="31.0" prefWidth="257.0" />
-      <TextField layoutX="845.0" layoutY="490.0" prefHeight="31.0" prefWidth="257.0" />
-      <TextField layoutX="845.0" layoutY="580.0" prefHeight="31.0" prefWidth="257.0" />
+      <Button layoutX="528.0" layoutY="521.0" mnemonicParsing="false" onAction="#clickUnirse" prefHeight="31.0" prefWidth="103.0" text="Unirse" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="528.0" AnchorPane.rightAnchor="649.0" AnchorPane.topAnchor="521.0" />
+      <Button layoutX="382.0" layoutY="521.0" mnemonicParsing="false" onAction="#clickHost" prefHeight="31.0" prefWidth="94.0" text="Host" />
+      <TextField fx:id="ipP" layoutX="622.0" layoutY="254.0" onInputMethodTextChanged="#verificarIP" prefHeight="31.0" prefWidth="257.0" promptText="Ingrese su ip." />
+      <TextField layoutX="622.0" layoutY="360.0" prefHeight="31.0" prefWidth="257.0" promptText="Ingrese su port." />
+      <TextField layoutX="845.0" layoutY="490.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese la ip a la que quiere unirse." />
+      <TextField layoutX="845.0" layoutY="580.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese el puerto al que quiere unirse." />
    </children>
 </AnchorPane>

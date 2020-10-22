@@ -1,16 +1,23 @@
 package sample;
 
-import javafx.event.ActionEvent;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
     @FXML
     public void clickUnirse(){
-        System.out.println("Hola");
+
+    }
+    @FXML
+    public void clickHost() {
+
     }
 
     @Override
