@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class ControllerLogin implements Initializable {
     @FXML
     private TextField ipP;
     @FXML
@@ -92,6 +92,12 @@ public class Controller implements Initializable {
                 Integer.parseInt(ipEx);
             }
             Integer.parseInt(portEx);
+            Parent esperandoParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
+            Scene esperandoScene = new Scene(esperandoParent);
+
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(esperandoScene);
+            window.show();
         }
         catch(NumberFormatException e){
             ipP.setText("");
