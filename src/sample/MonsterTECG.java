@@ -10,7 +10,7 @@ public class MonsterTECG extends Application {
 
     @Override
     public void start(Stage loginStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Controllers/Login.fxml"));
         loginStage.setTitle("MonstersTECG");
         root.setId("pane");
         Scene scene = new Scene(root, 1280, 720);
