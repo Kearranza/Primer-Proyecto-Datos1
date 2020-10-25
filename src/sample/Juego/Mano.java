@@ -20,21 +20,35 @@ public class Mano {
         this.last = carta;
         carta.setNextMano(carta);
         carta.setPrevMano(carta);
-
-
+        this.size= 1;
         Carta current = this.last;
-        for (int i=0;i<4; i++){
+        Carta currentf = this.first;
+        boolean flag = true;
+        while (this.size<4){
             valorAleatorio = (int)Math.floor(Math.random()*40);
-            current.setNextMano(inventario.buscar(valorAleatorio));
-            this.last = current.getNextMano();
-            this.last.setPrevMano(current);
-            this.last.setNextMano(this.first);
-            this.first.setPrevMano(this.last);
-            System.out.println(current);
-            current = current.getNextMano();
+            carta = inventario.buscar(valorAleatorio);
+            for (int j = 0; j < this.size;j++){
+                 if (currentf == carta){
+                     flag = false;
+                     break;
+                 }
+                 else{
+                     currentf = currentf.getNext();
+                 }
+            }
+            if (flag){
+                current.setNextMano(carta);
+                this.last = current.getNextMano();
+                this.last.setPrevMano(current);
+                this.last.setNextMano(this.first);
+                this.first.setPrevMano(this.last);
+                current = current.getNextMano();
+                this.size +=1;
+            }
         }
-        this.size = 4;
     }
+
+
     public void add(Carta carta){
         if (this.first == null){
             this.first = carta;
@@ -56,10 +70,36 @@ public class Mano {
     }
     public void remove(Carta carta){
         if(this.size == 1){
+            carta.setNextMano(null);
+            carta.setPrevMano(null);
+            this.first = null;
+            this.last = null;
+        }
+        else if(this.first == carta){
+            this.first = this.first.getNextMano();
+            this.first.setPrevMano(this.last);
+            this.last.setNextMano(this.first);
 
+        }
+        else if(this.last == carta){
+            this.last = this.last.getPrevMano();
+            this.first.setPrevMano(this.last);
+            this.last.setNextMano(this.first);
         }
         else{
+            Carta current = this.first;
+            for (int i = 0; i < this.size;i++){
+                if (current == carta){
+                    current.getPrevMano().setNextMano(current.getNextMano());
+                    current.getNextMano().setPrevMano(current.getPrevMano());
+                    current.setNextMano(null);
+                    current.setPrevMano(null);
+                    break;
+                }
+                current = current.getNextMano();
+            }
 
         }
+        this.size -=1;
     }
 }

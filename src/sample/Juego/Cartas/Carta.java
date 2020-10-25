@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 
 public class Carta {
     private Carta next = null;
-    private Carta prev = null;
     private Carta nextMano = null;
     private Carta prevMano = null;
     private int coste;
@@ -26,13 +25,6 @@ public class Carta {
         this.next = next;
     }
 
-    public Carta getPrev() {
-        return prev;
-    }
-
-    public void setPrev(Carta prev) {
-        this.prev = prev;
-    }
 
     public int getCoste() {
         return coste;

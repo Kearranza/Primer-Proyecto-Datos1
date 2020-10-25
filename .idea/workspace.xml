@@ -170,13 +170,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -235,6 +237,7 @@
       <workItem from="1603513031611" duration="243000" />
       <workItem from="1603578618521" duration="5454000" />
       <workItem from="1603584339608" duration="8460000" />
+      <workItem from="1603592959706" duration="2696000" />
     </task>
     <servers />
   </component>
@@ -268,29 +271,29 @@
     </state>
     <state x="520" y="124" key="FileChooserDialogImpl/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603246540830" />
     <state x="765" y="-658" key="FileChooserDialogImpl/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603241320176" />
-    <state width="1493" height="269" key="GridCell.Tab.0.bottom" timestamp="1603591265732">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="311" key="GridCell.Tab.0.bottom" timestamp="1603595660142">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603591265732" />
-    <state width="1493" height="312" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603513279841" />
+    <state width="1493" height="311" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
     <state width="1317" height="267" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603581409331" />
-    <state width="1493" height="269" key="GridCell.Tab.0.center" timestamp="1603591265732">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="311" key="GridCell.Tab.0.center" timestamp="1603595660142">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603591265732" />
-    <state width="1493" height="312" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603513279841" />
+    <state width="1493" height="311" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
     <state width="1317" height="267" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603581409331" />
-    <state width="1493" height="269" key="GridCell.Tab.0.left" timestamp="1603591265732">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="311" key="GridCell.Tab.0.left" timestamp="1603595660142">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603591265732" />
-    <state width="1493" height="312" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603513279841" />
+    <state width="1493" height="311" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
     <state width="1317" height="267" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603581409331" />
-    <state width="1493" height="269" key="GridCell.Tab.0.right" timestamp="1603591265732">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1493" height="311" key="GridCell.Tab.0.right" timestamp="1603595660142">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603591265732" />
-    <state width="1493" height="312" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603513279841" />
+    <state width="1493" height="311" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
     <state width="1317" height="267" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603581409331" />
     <state x="380" y="46" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603588343997">
       <screen x="0" y="0" width="1536" height="824" />
