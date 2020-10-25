@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Juego.InventarioCartas;
+import sample.Juego.Mano;
 
 public class MonsterTECG extends Application {
 
@@ -17,9 +18,10 @@ public class MonsterTECG extends Application {
         Scene scene = new Scene(root, 1280, 720);
         loginStage.setResizable(false);
         loginStage.setScene(scene);
-        InventarioCartas inventario = new InventarioCartas();
+        InventarioCartas inventario = InventarioCartas.getInstance();
         loginStage.show();
-
+        Mano mano = new Mano();
+        mano.inicial();
     }
 
 
