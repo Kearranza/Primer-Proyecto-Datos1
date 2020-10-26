@@ -9,9 +9,22 @@ public class Mano {
     private int size = 0;
 
     public Mano() {
+        this.inicial();
     }
 
-    public void inicial(){
+    public Carta getFirst() {
+        return first;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Carta getLast() {
+        return last;
+    }
+
+    private void inicial(){
 
         int valorAleatorio = (int)Math.floor(Math.random()*40);
         InventarioCartas inventario = InventarioCartas.getInstance();
@@ -24,7 +37,8 @@ public class Mano {
         Carta current = this.last;
         Carta currentf = this.first;
         boolean flag = true;
-        while (this.size<4){
+        System.out.println(current);
+        while (this.size<20){
             valorAleatorio = (int)Math.floor(Math.random()*40);
             carta = inventario.buscar(valorAleatorio);
             for (int j = 0; j < this.size;j++){
@@ -33,16 +47,17 @@ public class Mano {
                      break;
                  }
                  else{
-                     currentf = currentf.getNext();
+                     currentf = currentf.getNextMano();
                  }
             }
             if (flag){
                 current.setNextMano(carta);
-                this.last = current.getNextMano();
+                this.last = carta;
                 this.last.setPrevMano(current);
                 this.last.setNextMano(this.first);
                 this.first.setPrevMano(this.last);
                 current = current.getNextMano();
+                System.out.println(current);
                 this.size +=1;
             }
         }
