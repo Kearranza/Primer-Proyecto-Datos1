@@ -14,7 +14,6 @@ public class Mazo {
 
     private void inicial(Mano mano) {
         Carta current = mano.getFirst();
-        boolean flag = true;
         int i = 0;
         while (i < this.maxsize) {
             this.stackArray[++top] = current;

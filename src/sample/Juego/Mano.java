@@ -36,9 +36,8 @@ public class Mano {
         this.size= 1;
         Carta current = this.last;
         Carta currentf = this.first;
-        boolean flag = true;
-        System.out.println(current);
         while (this.size<20){
+            boolean flag = true;
             valorAleatorio = (int)Math.floor(Math.random()*40);
             carta = inventario.buscar(valorAleatorio);
             for (int j = 0; j < this.size;j++){
@@ -57,7 +56,6 @@ public class Mano {
                 this.last.setNextMano(this.first);
                 this.first.setPrevMano(this.last);
                 current = current.getNextMano();
-                System.out.println(current);
                 this.size +=1;
             }
         }
