@@ -11,14 +11,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Conexion.Cliente;
+import sample.Conexion.Servidor;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
-    @FXML
-    private TextField ipP;
     @FXML
     private TextField ipE;
     @FXML
@@ -27,29 +27,28 @@ public class ControllerLogin implements Initializable {
     private TextField portE;
     @FXML
     public void clickHost(ActionEvent event) throws IOException {
-        String ipPer = ipP.getText();
         String portPer = portP.getText();
         boolean flag = true;
         try{
-            String[] componentsP = ipPer.split("\\.");
-            for (int i = 0; i < componentsP.length;i++){
-                Integer.parseInt(componentsP[i]);
-                flag =false;
-            }
-            if (flag){
-                Integer.parseInt(ipPer);
-            }
             Integer.parseInt(portPer);
+            Servidor s = new Servidor(Integer.parseInt(portPer));
+            if (s.isConectado() == false){
+                throw new IllegalArgumentException();
+            }
+            else{
+                Thread ts = new Thread(s);
+                ts.start();
 
-            Parent esperandoParent = FXMLLoader.load(getClass().getResource("Esperando.fxml"));
-            Scene esperandoScene = new Scene(esperandoParent);
+                Parent esperandoParent = FXMLLoader.load(getClass().getResource("Esperando.fxml"));
+                Scene esperandoScene = new Scene(esperandoParent);
 
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(esperandoScene);
-            window.show();
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(esperandoScene);
+                window.show();
+            }
+
         }
         catch(NumberFormatException e){
-            ipP.setText("");
             ipE.setText("");
             portP.setText("");
             portE.setText("");
@@ -60,24 +59,26 @@ public class ControllerLogin implements Initializable {
             error.setContentText("Se escribió de forma incorrecta, ya sea, un ip o un puerto, por favor escriba nada más números.");
             error.showAndWait();
         }
+        catch (IllegalArgumentException e){
+            ipE.setText("");
+            portP.setText("");
+            portE.setText("");
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            DialogPane dialogPane = error.getDialogPane();
+            error.setTitle("Alerta");
+            error.setHeaderText("Hubo un error a la hora de procesar la información digitada");
+            error.setContentText("No se pudo realizar la conexion al puerto asignado.");
+            error.showAndWait();
+        }
 
     }
     @FXML
     public void clickUnirse(ActionEvent event) throws IOException {
-        String ipPer = ipP.getText();
         String portPer = portP.getText();
         String ipEx = ipE.getText();
         String portEx = portE.getText();
         boolean flag = true;
         try{
-            String[] componentsP = ipPer.split("\\.");
-            for (int i = 0; i < componentsP.length;i++){
-                Integer.parseInt(componentsP[i]);
-                flag =false;
-            }
-            if (flag){
-                Integer.parseInt(ipPer);
-            }
             Integer.parseInt(portPer);
             String[] componentsE = ipEx.split("\\.");
             for (int i = 0; i < componentsE.length;i++){
@@ -87,16 +88,31 @@ public class ControllerLogin implements Initializable {
             if (flag){
                 Integer.parseInt(ipEx);
             }
+            Integer.parseInt(portPer);
             Integer.parseInt(portEx);
-            Parent esperandoParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
-            Scene esperandoScene = new Scene(esperandoParent);
+            Cliente c = new Cliente(Integer.parseInt(portEx), "conectado", null, ipE.getText());
+            if (c.isConectado() == false){
+                throw new IllegalArgumentException();
+            }
+            Servidor s = new Servidor(Integer.parseInt(portPer));
+            if (s.isConectado() == false){
+                throw new IllegalArgumentException();
+            }
+            else{
+                Thread tc = new Thread(c);
+                tc.start();
+                Thread ts = new Thread(s);
+                ts.start();
+                Parent esperandoParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
+                Scene esperandoScene = new Scene(esperandoParent);
 
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(esperandoScene);
-            window.show();
+                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(esperandoScene);
+                window.show();
+            }
+
         }
         catch(NumberFormatException e){
-            ipP.setText("");
             ipE.setText("");
             portP.setText("");
             portE.setText("");
@@ -105,6 +121,17 @@ public class ControllerLogin implements Initializable {
             error.setTitle("Alerta");
             error.setHeaderText("Hubo un error a la hora de procesar la información digitada");
             error.setContentText("Se escribió de forma incorrecta, ya sea, un ip o un puerto, por favor escriba nada más números.");
+            error.showAndWait();
+        }
+        catch (IllegalArgumentException e){
+            ipE.setText("");
+            portP.setText("");
+            portE.setText("");
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            DialogPane dialogPane = error.getDialogPane();
+            error.setTitle("Alerta");
+            error.setHeaderText("Hubo un error a la hora de procesar la información digitada");
+            error.setContentText("No se pudo realizar la conexion al puerto asignado.");
             error.showAndWait();
         }
 

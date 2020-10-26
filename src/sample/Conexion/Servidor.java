@@ -12,13 +12,13 @@ import java.util.logging.Logger;
  *
  * @author Bryan Martínez
  */
-public class Servidor extends Observable implements Runnable{
+public class Servidor implements Runnable{
 
     /**
      *
      */
-    public int puerto = 5000;
-
+    public int puerto;
+    private boolean conectado;
     /**
      *
      */
@@ -26,38 +26,37 @@ public class Servidor extends Observable implements Runnable{
 
     /**
      *
+     * @return
      */
-    public Servidor (){
-        boolean flag =true;
-        while (flag){
-            try{
-                this.servidor = new ServerSocket(puerto);
-                flag = false;
-            }catch(IOException ex){
-                puerto+=1;
-            }
+    public Servidor(int puerto){
+        try{
+            this.servidor = new ServerSocket(puerto);
+            this.puerto= puerto;
+            this.conectado = true;
+        }catch(IOException ex){
+            this.conectado = false;
         }
-        this.puerto= puerto;
     }
+
+    public boolean isConectado() {
+        return conectado;
+    }
+
     /**
      *Inicia el servidor y esta atento a recibir mensajes para notificar y crear un nuevo chat o agregar el mensaje a uno existente
      */
     @Override
     public void run() {
-        Socket sc = null;
+        Socket sc;
         DataInputStream in;
         try{
             while(true){
-                sc = servidor.accept();
+                sc = this.servidor.accept();
                 in = new DataInputStream(sc.getInputStream());
-
                 String mensaje = in.readUTF();
-                String[] components = mensaje.split("\\|");
-                //Chat chat = new Chat(components[0], components[1]);
-
-                this.setChanged();
-                this.notifyObservers(components[0]);
-                this.clearChanged();
+                if (mensaje.equals("conectado")){
+                    System.out.println("FNAJJ");
+                }
                 sc.close();
 
             }

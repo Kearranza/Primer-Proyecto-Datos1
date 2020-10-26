@@ -26,10 +26,10 @@ public class MonsterTECG extends Application {
         Jugador jugador = new Jugador();
         loginStage.show();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        Esbirro cali = new Esbirro(10,"Esbirro/Jorge.png",10);
-        String mecagoenmaven = objectMapper.writeValueAsString(cali);
-        System.out.println(mecagoenmaven);
+        //ObjectMapper objectMapper = new ObjectMapper();
+        //Esbirro cali = new Esbirro(10,"Esbirro/Jorge.png",10);
+        //String mecagoenmaven = objectMapper.writeValueAsString(cali);
+        //System.out.println(mecagoenmaven);
 
     }
 

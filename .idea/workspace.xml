@@ -155,10 +155,9 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application">
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="sample.MonsterTECG" />
       <module name="Primer-Proyecto-Datos1" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.Controllers.*" />
@@ -177,13 +176,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -248,6 +249,7 @@
       <workItem from="1603672448871" duration="1684000" />
       <workItem from="1603674241462" duration="31000" />
       <workItem from="1603674318072" duration="2635000" />
+      <workItem from="1603741711568" duration="7581000" />
     </task>
     <servers />
   </component>
@@ -271,11 +273,15 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1045" y="56" key="#com.intellij.ide.util.MemberChooser" timestamp="1603672799285">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="439" y="-744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603744308879">
+      <screen x="305" y="-768" width="1360" height="738" />
+    </state>
+    <state x="439" y="-744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603744308879" />
+    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser" timestamp="1603748932365">
+      <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state x="1045" y="56" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1603672799285" />
-    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603670523612" />
+    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603748932365" />
     <state x="397" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1603674426789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -285,30 +291,30 @@
     </state>
     <state x="520" y="124" key="FileChooserDialogImpl/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603246540830" />
     <state x="765" y="-658" key="FileChooserDialogImpl/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603241320176" />
-    <state width="1493" height="269" key="GridCell.Tab.0.bottom" timestamp="1603676955375">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1317" height="182" key="GridCell.Tab.0.bottom" timestamp="1603749205567">
+      <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603676955375" />
     <state width="1493" height="311" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
-    <state width="1317" height="89" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603671909007" />
-    <state width="1493" height="269" key="GridCell.Tab.0.center" timestamp="1603676955374">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1317" height="182" key="GridCell.Tab.0.bottom/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603749205567" />
+    <state width="1317" height="182" key="GridCell.Tab.0.center" timestamp="1603749205567">
+      <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603676955374" />
     <state width="1493" height="311" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
-    <state width="1317" height="89" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603671909007" />
-    <state width="1493" height="269" key="GridCell.Tab.0.left" timestamp="1603676955374">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1317" height="182" key="GridCell.Tab.0.center/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603749205567" />
+    <state width="1317" height="182" key="GridCell.Tab.0.left" timestamp="1603749205567">
+      <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603676955374" />
     <state width="1493" height="311" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
-    <state width="1317" height="89" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603671909007" />
-    <state width="1493" height="269" key="GridCell.Tab.0.right" timestamp="1603676955375">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1317" height="182" key="GridCell.Tab.0.left/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603749205567" />
+    <state width="1317" height="182" key="GridCell.Tab.0.right" timestamp="1603749205567">
+      <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state width="1493" height="269" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603676955375" />
     <state width="1493" height="311" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@0.0.1536.834" timestamp="1603595660142" />
-    <state width="1317" height="89" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603671909007" />
+    <state width="1317" height="182" key="GridCell.Tab.0.right/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603749205567" />
     <state width="1317" height="491" key="GridCell.Tab.1.bottom" timestamp="1603669596874">
       <screen x="305" y="-768" width="1360" height="738" />
     </state>
@@ -337,6 +343,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="380" y="46" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1603588343997" />
+    <state x="518" y="-663" width="934" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1603746781299">
+      <screen x="305" y="-768" width="1360" height="738" />
+    </state>
+    <state x="518" y="-663" width="934" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603746781299" />
     <state x="144" y="190" key="run.anything.popup" timestamp="1603673157699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -345,5 +355,15 @@
       <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state x="648" y="-709" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603241063921" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
