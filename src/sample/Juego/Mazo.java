@@ -3,14 +3,28 @@ package sample.Juego;
 import sample.Juego.Cartas.Carta;
 
 public class Mazo {
-    private Carta first =null;
-    private int size = 0;
+    private int top = -1;
+    private int maxsize = 16;
+    private Carta[] stackArray;
 
-    public void inicial(){
-
+    public Mazo(Mano mano) {
+        this.stackArray = new Carta[16];
+        this.inicial(mano);
     }
 
-    public void eliminar(){
+    private void inicial(Mano mano) {
+        Carta current = mano.getFirst();
+        boolean flag = true;
+        int i = 0;
+        while (i < this.maxsize) {
+            this.stackArray[++top] = current;
+            mano.remove(current);
+            current = mano.getFirst();
+            i+=1;
+            }
+        }
 
+    public Carta eliminar(){
+        return this.stackArray[top--];
     }
 }

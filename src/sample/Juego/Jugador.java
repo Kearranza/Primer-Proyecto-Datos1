@@ -6,18 +6,20 @@ public class Jugador {
     private Mano mano;
     private Mazo mazo;
 
-    public Jugador(Mano mano, Mazo mazo) {
+    public Jugador() {
+        Mano mano = new Mano();
         this.mano = mano;
+        this.crearMazo();
+    }
+    public void crearMazo(){
+        Mazo mazo = new Mazo(this.mano);
         this.mazo = mazo;
     }
-
     public int getPv() {
         return pv;
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
-    }
+    public void setPv(int pv) { this.pv = pv; }
 
     public int getMana() {
         return mana;
@@ -31,17 +33,11 @@ public class Jugador {
         return mano;
     }
 
-    public void setMano(Mano mano) {
-        this.mano = mano;
-    }
 
     public Mazo getMazo() {
         return mazo;
     }
 
-    public void setMazo(Mazo mazo) {
-        this.mazo = mazo;
-    }
 
     public void robar(){
 
