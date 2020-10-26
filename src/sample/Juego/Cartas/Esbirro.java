@@ -11,7 +11,7 @@ public class Esbirro extends Carta {
     public int getAtaque() {
         return ataque;
     }
-    public void atacar(){
+    public void accion(){
 
     }
 }

@@ -45,4 +45,5 @@ public class Carta {
     public void setPrevMano(Carta prevMano) {
         this.prevMano = prevMano;
     }
+
 }
