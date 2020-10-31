@@ -10,33 +10,14 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author Bryan Martínez
- */
 public class Cliente implements Runnable{
 
-    /**
-     *
-     */
     public int puerto;
-
-    /**
-     *
-     */
     public String mensaje;
-
     private boolean conectado;
-
     public String ip;
 
-    /**
-     *
-     * @param puerto
-     * @param mensaje
-     */
     public Cliente(int puerto, String mensaje, Carta carta, String ip){
         if (carta != null){
 
@@ -71,9 +52,6 @@ public class Cliente implements Runnable{
         return conectado;
     }
 
-    /**
-     *Creacion del nuevo cliente y envio del mensaje
-     */
     @Override
     public void run() {
         DataOutputStream out;
