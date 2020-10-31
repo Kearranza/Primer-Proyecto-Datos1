@@ -35,55 +35,15 @@
          </font>
       </Label>
       <Button layoutX="981.0" layoutY="312.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="31.0" prefWidth="92.0" text="End Turn" />
-      <ImageView fitHeight="175.0" fitWidth="129.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="1153.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="Carta1" fitHeight="175.0" fitWidth="129.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta2" fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta3" fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4" fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta5" fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta6" fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta7" fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
