@@ -24,16 +24,66 @@
             <Font name="System Bold" size="47.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="423.0" layoutY="593.0" prefHeight="47.0" prefWidth="85.0" text="100" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="401.0" layoutY="457.0" prefHeight="47.0" prefWidth="85.0" text="100" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="47.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="783.0" layoutY="586.0" prefHeight="69.0" prefWidth="85.0" text="20" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="788.0" layoutY="457.0" prefHeight="69.0" prefWidth="85.0" text="20" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="47.0" />
          </font>
       </Label>
       <Button layoutX="981.0" layoutY="312.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="31.0" prefWidth="92.0" text="End Turn" />
+      <ImageView fitHeight="175.0" fitWidth="129.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="175.0" fitWidth="134.0" layoutX="1153.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Cartas/Hechizos/Hechizo/Arma.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
