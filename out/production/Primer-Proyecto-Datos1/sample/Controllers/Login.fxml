@@ -10,14 +10,13 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
-            <Image url="@../Imagenes/Fondos/LoginFondo.jpg" />
+            <Image url="@../Imagenes/Fondos/LoginFondo.png" />
          </image>
       </ImageView>
-      <Button layoutX="528.0" layoutY="521.0" mnemonicParsing="false" onAction="#clickUnirse" prefHeight="31.0" prefWidth="103.0" text="Unirse" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="528.0" AnchorPane.rightAnchor="649.0" AnchorPane.topAnchor="521.0" />
-      <Button layoutX="382.0" layoutY="521.0" mnemonicParsing="false" onAction="#clickHost" prefHeight="31.0" prefWidth="94.0" text="Host" />
-      <TextField fx:id="ipP" layoutX="622.0" layoutY="254.0" prefHeight="31.0" prefWidth="257.0" promptText="Ingrese su ip." />
-      <TextField fx:id="portP" layoutX="622.0" layoutY="360.0" prefHeight="31.0" prefWidth="257.0" promptText="Ingrese su port." />
-      <TextField fx:id="ipE" layoutX="845.0" layoutY="490.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese la ip a la que quiere unirse." />
-      <TextField fx:id="portE" layoutX="845.0" layoutY="580.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese el puerto al que quiere unirse." />
+      <Button layoutX="546.0" layoutY="580.0" mnemonicParsing="false" onAction="#clickUnirse" prefHeight="31.0" prefWidth="94.0" text="Unirse" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="546.0" AnchorPane.rightAnchor="640.0" AnchorPane.topAnchor="580.0" />
+      <Button layoutX="546.0" layoutY="329.0" mnemonicParsing="false" onAction="#clickHost" prefHeight="31.0" prefWidth="94.0" text="Host" />
+      <TextField fx:id="portP" layoutX="678.0" layoutY="256.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese su puerto *Obligatorio*." />
+      <TextField fx:id="ipE" layoutX="593.0" layoutY="509.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese la ip a la que quiere unirse." />
+      <TextField fx:id="portE" layoutX="593.0" layoutY="416.0" prefHeight="31.0" prefWidth="268.0" promptText="Ingrese el puerto al que quiere unirse." />
    </children>
 </AnchorPane>
