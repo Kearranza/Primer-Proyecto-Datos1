@@ -9,12 +9,14 @@ public class Carta {
     private Carta prevMano = null;
     private int coste;
     private Image image;
-    private ImageView imageView;
 
     public Carta(int coste, String imagen) {
         this.coste = coste;
         this.image = new Image(getClass().getResourceAsStream(imagen));
-        this.imageView = new ImageView(image);
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public Carta getNext() {
