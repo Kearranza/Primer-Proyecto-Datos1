@@ -26,6 +26,5 @@ public class ControllerEsperando implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

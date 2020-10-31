@@ -37,20 +37,40 @@
          </font>
       </Label>
       <Button layoutX="981.0" layoutY="312.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="31.0" prefWidth="92.0" text="End Turn" />
-      <ImageView fx:id="Carta1" fitHeight="175.0" fitWidth="129.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta2" fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta3" fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta4" fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta5" fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta6" fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta7" fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="historial" editable="false" layoutX="15.0" layoutY="59.0" opacity="0.75" prefHeight="464.0" prefWidth="229.0" style="-fx-control-inner-background: #000000; -fx-font-family: Consolas; -fx-text-fill: #ffffff; -fx-background-color: #000000;" wrapText="true">
+      <ImageView fx:id="Carta1" fitHeight="175.0" fitWidth="129.0" layoutY="536.0" onMouseEntered="#preview1" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta2" fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" onMouseEntered="#preview2" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta3" fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" onMouseEntered="#preview3" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4" fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" onMouseEntered="#preview4" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta5" fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" onMouseEntered="#preview5" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta6" fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" onMouseEntered="#preview6" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta7" fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" onMouseEntered="#preview7" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" onMouseEntered="#preview8" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" onMouseEntered="#preview9" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" onMouseEntered="#preview10" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Mazo.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="296.0" fitWidth="240.0" layoutX="12.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Historial.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="historial" layoutX="40.0" layoutY="237.0" opacity="0.65" prefHeight="182.0" prefWidth="178.0" style="-fx-control-inner-background: rgba(221,180,119, 1); -fx-text-fill: #000000; -fx-background-color: rgba(221,180,119, 0,5);" wrapText="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <font>
+            <Font name="French Script MT" size="27.0" />
+         </font>
       </TextArea>
+      <ImageView fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Mazo.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Carta31" fitHeight="175.0" fitWidth="134.0" layoutX="263.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="CartaPreview" fitHeight="296.0" fitWidth="234.0" layoutX="525.0" layoutY="190.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -23,7 +23,7 @@ public class MonsterTECG extends Application {
         Scene scene = new Scene(root, 1280, 720);
         loginStage.setResizable(false);
         loginStage.setScene(scene);
-        Jugador jugador = Jugador.getInstance();
+        //Jugador jugador = Jugador.getInstance();
         loginStage.show();
 
         //ObjectMapper objectMapper = new ObjectMapper();
