@@ -1,10 +1,14 @@
 package sample.Controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Jugador;
 
@@ -19,9 +23,10 @@ public class ControllerTablero implements Initializable {
     private ImageView OrdenCartas[] = new ImageView[10];
 
     @FXML
-    public void click(ActionEvent evente) {
+    public void click(ActionEvent evente) throws InterruptedException {
         Jugador jugador = Jugador.getInstance();
         if (jugador.getMano().getSize()<10){
+            animaRobar();
             jugador.robar();
             Carta current = jugador.getMano().getFirst();
             for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -54,9 +59,12 @@ public class ControllerTablero implements Initializable {
     public void exit(){
         CartaPreview.setImage(null);
     }
-
-
-
+    @FXML
+    public void animaRobar(){
+        Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
+        t.play();
+        MazoMentira.setLayoutX(1091);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
