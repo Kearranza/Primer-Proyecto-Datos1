@@ -57,7 +57,7 @@
             <Image url="@../Juego/Historial.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="historial" layoutX="40.0" layoutY="237.0" opacity="0.65" prefHeight="182.0" prefWidth="178.0" style="-fx-control-inner-background: rgba(221,180,119, 1); -fx-text-fill: #000000; -fx-background-color: rgba(221,180,119, 0,5);" wrapText="true">
+      <TextArea fx:id="historial" editable="false" layoutX="40.0" layoutY="237.0" opacity="0.65" prefHeight="182.0" prefWidth="178.0" style="-fx-control-inner-background: rgba(221,180,119, 1); -fx-text-fill: #000000; -fx-background-color: rgba(221,180,119, 0,5);" wrapText="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

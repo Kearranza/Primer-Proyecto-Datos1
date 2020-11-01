@@ -19,8 +19,16 @@ public class ControllerTablero implements Initializable {
     private ImageView OrdenCartas[] = new ImageView[10];
 
     @FXML
-    public void click(ActionEvent evente){
-        historial.appendText("Hola"+"\n");
+    public void click(ActionEvent evente) {
+        Jugador jugador = Jugador.getInstance();
+        if (jugador.getMano().getSize()<10){
+            jugador.robar();
+            Carta current = jugador.getMano().getFirst();
+            for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                OrdenCartas[i].setImage(current.getImage());
+                current = current.getNextMano();
+            }
+        }
     }
     @FXML
     public void preview1(){ CartaPreview.setImage(Carta1.getImage());}
