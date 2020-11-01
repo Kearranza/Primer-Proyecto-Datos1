@@ -1,5 +1,7 @@
 package sample.Juego;
 
+import sample.Juego.Cartas.Carta;
+
 public class Jugador {
     public static Jugador instance = null;
     private int pv = 100;
@@ -59,7 +61,8 @@ public class Jugador {
     }
 
     public void robar(){
-
+        Carta robada = this.mazo.eliminar();
+        this.mano.add(robada);
     }
     public void invocar(){
 
