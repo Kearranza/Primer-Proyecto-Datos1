@@ -15,7 +15,7 @@ public class ControllerTablero implements Initializable {
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview;
+    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview,MazoMentira;
     private ImageView OrdenCartas[] = new ImageView[10];
 
     @FXML
@@ -46,6 +46,8 @@ public class ControllerTablero implements Initializable {
     public void exit(){
         CartaPreview.setImage(null);
     }
+
+
 
 
     @Override

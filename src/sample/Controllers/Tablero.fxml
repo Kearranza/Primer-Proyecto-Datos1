@@ -47,11 +47,6 @@
       <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" onMouseEntered="#preview8" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" onMouseEntered="#preview9" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" onMouseEntered="#preview10" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Juego/Mazo.gif" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="296.0" fitWidth="240.0" layoutX="12.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Juego/Historial.png" />
@@ -65,12 +60,17 @@
             <Font name="French Script MT" size="27.0" />
          </font>
       </TextArea>
-      <ImageView fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Carta31" fitHeight="175.0" fitWidth="134.0" layoutX="263.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="CartaPreview" fitHeight="296.0" fitWidth="234.0" layoutX="525.0" layoutY="190.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="MazoVerdadero" fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Juego/Mazo.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="Carta31" fitHeight="175.0" fitWidth="134.0" layoutX="263.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="CartaPreview" fitHeight="296.0" fitWidth="234.0" layoutX="525.0" layoutY="190.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="MazoMentira" fitHeight="251.0" fitWidth="178.0" layoutX="1091.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Juego/Mazo.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
