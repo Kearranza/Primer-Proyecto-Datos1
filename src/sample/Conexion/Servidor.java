@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Servidor extends Observable implements Runnable{
-    public static Servidor instance = null;
+
     private boolean ocupado;
     public int puerto;
     private boolean conectado;

@@ -138,7 +138,7 @@ public class ControllerTablero implements Initializable {
     public static void setJugable(boolean cambio) {
         jugable = cambio;
     }
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         OrdenCartas[0] = Carta1;
