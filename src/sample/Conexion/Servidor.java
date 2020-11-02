@@ -8,8 +8,9 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Servidor implements Runnable{
-
+public class Servidor extends Observable implements Runnable{
+    public static Servidor instance = null;
+    private boolean ocupado;
     public int puerto;
     private boolean conectado;
     public ServerSocket servidor = null;
@@ -28,6 +29,10 @@ public class Servidor implements Runnable{
         return conectado;
     }
 
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
     @Override
     public void run() {
         Socket sc;
@@ -37,8 +42,11 @@ public class Servidor implements Runnable{
                 sc = this.servidor.accept();
                 in = new DataInputStream(sc.getInputStream());
                 String mensaje = in.readUTF();
-                if (mensaje.equals("conectado")){
-                    System.out.println("FNAJJ");
+                String[] components = mensaje.split("\\|");
+                if ((components[0].equals("conectado")) && (this.ocupado == false)){
+                    Cliente.puerto = Integer.parseInt(components[1]);
+                    Cliente.ip = components[2];
+                    this.ocupado = true;
                 }
                 sc.close();
 

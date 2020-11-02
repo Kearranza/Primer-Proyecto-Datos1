@@ -20,7 +20,7 @@ public class InventarioCartas {
         }
         return instance;
     }
-    public InventarioCartas() {
+    private InventarioCartas() {
         if (head == null){
             Esbirro Jorge = new Esbirro(60,"Esbirro/Jorge.png",0);
             this.head = Jorge;
