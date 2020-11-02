@@ -48,6 +48,7 @@ public class ControllerLogin implements Initializable {
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(esperandoScene);
                 window.show();
+                ControllerTablero.setJugable(false);
             }
 
         }
@@ -112,6 +113,7 @@ public class ControllerLogin implements Initializable {
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                 window.setScene(esperandoScene);
                 window.show();
+                ControllerTablero.setJugable(true);
             }
 
         }
