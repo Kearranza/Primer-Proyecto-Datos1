@@ -1,5 +1,7 @@
 package sample.Juego;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;

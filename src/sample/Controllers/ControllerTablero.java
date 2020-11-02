@@ -9,9 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Jugador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,51 +22,81 @@ public class ControllerTablero implements Initializable {
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview,MazoMentira;
+    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
     private ImageView OrdenCartas[] = new ImageView[10];
 
     @FXML
-    public void click(ActionEvent evente) throws InterruptedException {
+    public void click(ActionEvent evente) throws InterruptedException, IOException {
         Jugador jugador = Jugador.getInstance();
-        if (jugador.getMano().getSize()<10){
-            animaRobar();
-            jugador.robar();
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                OrdenCartas[i].setImage(current.getImage());
-                current = current.getNextMano();
-            }
+
+        if (jugador.getMano().getSize() < 10) {
+            Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
+            t.play();
+            t.setOnFinished(event -> {
+                jugador.robar();
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    OrdenCartas[i].setImage(current.getImage());
+                    current = current.getNextMano();
+                }
+            });
+            MazoMentira.setLayoutX(1091);
         }
     }
+
     @FXML
-    public void preview1(){ CartaPreview.setImage(Carta1.getImage());}
-    @FXML
-    public void preview2(){ CartaPreview.setImage(Carta2.getImage());}
-    @FXML
-    public void preview3(){ CartaPreview.setImage(Carta3.getImage());}
-    @FXML
-    public void preview4(){ CartaPreview.setImage(Carta4.getImage());}
-    @FXML
-    public void preview5(){ CartaPreview.setImage(Carta5.getImage());}
-    @FXML
-    public void preview6(){ CartaPreview.setImage(Carta6.getImage());}
-    @FXML
-    public void preview7(){ CartaPreview.setImage(Carta7.getImage());}
-    @FXML
-    public void preview8(){ CartaPreview.setImage(Carta8.getImage());}
-    @FXML
-    public void preview9(){ CartaPreview.setImage(Carta9.getImage());}
-    @FXML
-    public void preview10(){ CartaPreview.setImage(Carta10.getImage());}
-    @FXML
-    public void exit(){
-        CartaPreview.setImage(null);
+    public void preview1() {
+        CartaPreview.setImage(Carta1.getImage());
     }
+
     @FXML
-    public void animaRobar(){
-        Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
-        t.play();
-        MazoMentira.setLayoutX(1091);
+    public void preview2() {
+        CartaPreview.setImage(Carta2.getImage());
+    }
+
+    @FXML
+    public void preview3() {
+        CartaPreview.setImage(Carta3.getImage());
+    }
+
+    @FXML
+    public void preview4() {
+        CartaPreview.setImage(Carta4.getImage());
+    }
+
+    @FXML
+    public void preview5() {
+        CartaPreview.setImage(Carta5.getImage());
+    }
+
+    @FXML
+    public void preview6() {
+        CartaPreview.setImage(Carta6.getImage());
+    }
+
+    @FXML
+    public void preview7() {
+        CartaPreview.setImage(Carta7.getImage());
+    }
+
+    @FXML
+    public void preview8() {
+        CartaPreview.setImage(Carta8.getImage());
+    }
+
+    @FXML
+    public void preview9() {
+        CartaPreview.setImage(Carta9.getImage());
+    }
+
+    @FXML
+    public void preview10() {
+        CartaPreview.setImage(Carta10.getImage());
+    }
+
+    @FXML
+    public void exit() {
+        CartaPreview.setImage(null);
     }
 
     @Override
@@ -80,7 +113,7 @@ public class ControllerTablero implements Initializable {
         OrdenCartas[9] = Carta10;
         Jugador jugador = Jugador.getInstance();
         Carta current = jugador.getMano().getFirst();
-        for (int i = 0; i < jugador.getMano().getSize();i++){
+        for (int i = 0; i < jugador.getMano().getSize(); i++) {
             OrdenCartas[i].setImage(current.getImage());
             current = current.getNextMano();
         }

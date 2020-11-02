@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.Calamidad;
 import sample.Juego.InventarioCartas;
@@ -23,14 +24,12 @@ public class MonsterTECG extends Application {
         Scene scene = new Scene(root, 1280, 720);
         loginStage.setResizable(false);
         loginStage.setScene(scene);
-        //Jugador jugador = Jugador.getInstance();
         loginStage.show();
 
         //ObjectMapper objectMapper = new ObjectMapper();
         //Esbirro cali = new Esbirro(10,"Esbirro/Jorge.png",10);
-        //String mecagoenmaven = objectMapper.writeValueAsString(cali);
+        //String mecagoenmaven = objectMapper.writeValueAsString(jugador.getMano().getFirst());
         //System.out.println(mecagoenmaven);
-
     }
 
 

@@ -11,8 +11,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Conexion.Cliente;
 import sample.Conexion.Servidor;
+import sample.Juego.Cartas.Esbirro;
 
 import java.io.IOException;
 import java.net.URL;

@@ -2,7 +2,6 @@ package sample.Juego.Cartas;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class Carta {
     private Carta next = null;
     private Carta nextMano = null;
@@ -46,6 +45,8 @@ public class Carta {
 
     public void setPrevMano(Carta prevMano) {
         this.prevMano = prevMano;
+    }
+    public void accion(){
     }
 
 }
