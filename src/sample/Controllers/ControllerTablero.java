@@ -26,15 +26,19 @@ public class ControllerTablero implements Initializable {
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
-    private final ImageView[] OrdenCartas = new ImageView[10];
+    private static ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
+    private static ImageView[] OrdenCartas = new ImageView[10];
     @FXML
     private Label LabelTurnos;
 
     @FXML
     public void click(ActionEvent evente) throws InterruptedException, IOException {
-        Jugador jugador = Jugador.getInstance();
+        setJugable(!jugable);
+        LabelTurnos.setText(String.valueOf(++this.turnos));
 
+    }
+    public static void roboGUI(){
+        Jugador jugador = Jugador.getInstance();
         if (jugador.getMano().getSize() < 10) {
             Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
             t.play();
@@ -48,9 +52,6 @@ public class ControllerTablero implements Initializable {
             });
             MazoMentira.setLayoutX(1091);
         }
-        setJugable(!jugable);
-        LabelTurnos.setText(String.valueOf(++this.turnos));
-
     }
 
     @FXML
