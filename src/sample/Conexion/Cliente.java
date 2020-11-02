@@ -1,5 +1,6 @@
 package sample.Conexion;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import sample.Juego.Cartas.Carta;
 
 import java.io.DataOutputStream;
@@ -7,20 +8,22 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.UnknownHostException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Cliente implements Runnable{
 
-    public int puerto;
+    public static int puerto;
     public String mensaje;
     private boolean conectado;
-    public String ip;
+    public static String ip;
 
-    public Cliente(int puerto, String mensaje, Carta carta, String ip){
+    public Cliente(int puerto, String mensaje, Carta carta, String ip) throws IOException {
         if (carta != null){
-
+            ObjectMapper objectMapper = new ObjectMapper();
+            String Cmapper = objectMapper.writeValueAsString(carta);
+            this.mensaje = Cmapper;
         }
         else{
             try {

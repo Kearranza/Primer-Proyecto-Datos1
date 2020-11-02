@@ -11,11 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Conexion.Cliente;
 import sample.Conexion.Servidor;
-import sample.Juego.Cartas.Esbirro;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,10 +28,9 @@ public class ControllerLogin implements Initializable {
     @FXML
     public void clickHost(ActionEvent event) throws IOException {
         String portPer = portP.getText();
-        boolean flag = true;
         try{
             Integer.parseInt(portPer);
-            Servidor s = new Servidor(Integer.parseInt(portPer));
+            Servidor s = new Servidor (Integer.parseInt(portPer));
             if (s.isConectado() == false){
                 throw new IllegalArgumentException();
             }
@@ -42,11 +38,11 @@ public class ControllerLogin implements Initializable {
                 Thread ts = new Thread(s);
                 ts.start();
 
-                Parent esperandoParent = FXMLLoader.load(getClass().getResource("Esperando.fxml"));
-                Scene esperandoScene = new Scene(esperandoParent);
+                Parent tableroParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
+                Scene tableroScene = new Scene(tableroParent);
 
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                window.setScene(esperandoScene);
+                window.setScene(tableroScene);
                 window.show();
             }
 
@@ -93,7 +89,7 @@ public class ControllerLogin implements Initializable {
             }
             Integer.parseInt(portPer);
             Integer.parseInt(portEx);
-            Cliente c = new Cliente(Integer.parseInt(portEx), "conectado", null, ipE.getText());
+            Cliente c = new Cliente(Integer.parseInt(portEx), "conectado"+"|"+portP.getText()+"|"+ipE.getText(), null, ipE.getText());
             if (c.isConectado() == false){
                 throw new IllegalArgumentException();
             }
@@ -106,11 +102,12 @@ public class ControllerLogin implements Initializable {
                 tc.start();
                 Thread ts = new Thread(s);
                 ts.start();
-                Parent esperandoParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
-                Scene esperandoScene = new Scene(esperandoParent);
+
+                Parent tableroParent = FXMLLoader.load(getClass().getResource("Tablero.fxml"));
+                Scene tableroScene = new Scene(tableroParent);
 
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                window.setScene(esperandoScene);
+                window.setScene(tableroScene);
                 window.show();
             }
 
