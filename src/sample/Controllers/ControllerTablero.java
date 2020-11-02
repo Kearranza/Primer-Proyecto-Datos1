@@ -98,7 +98,7 @@ public class ControllerTablero implements Initializable {
     public void exit() {
         CartaPreview.setImage(null);
     }
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         OrdenCartas[0] = Carta1;
