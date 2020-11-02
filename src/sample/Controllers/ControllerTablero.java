@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -16,14 +17,19 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.cert.TrustAnchor;
 import java.util.ResourceBundle;
 
 public class ControllerTablero implements Initializable {
+    private static boolean jugable;
+    private int turnos = 1;
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
-    private ImageView OrdenCartas[] = new ImageView[10];
+    private ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
+    private final ImageView[] OrdenCartas = new ImageView[10];
+    @FXML
+    private Label LabelTurnos;
 
     @FXML
     public void click(ActionEvent evente) throws InterruptedException, IOException {
@@ -42,61 +48,94 @@ public class ControllerTablero implements Initializable {
             });
             MazoMentira.setLayoutX(1091);
         }
+        setJugable(!jugable);
+        LabelTurnos.setText(String.valueOf(++this.turnos));
+
     }
 
     @FXML
     public void preview1() {
-        CartaPreview.setImage(Carta1.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta1.getImage());
+        }
     }
 
     @FXML
     public void preview2() {
-        CartaPreview.setImage(Carta2.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta2.getImage());
+        }
     }
 
     @FXML
     public void preview3() {
-        CartaPreview.setImage(Carta3.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta3.getImage());
+        }
     }
 
     @FXML
     public void preview4() {
-        CartaPreview.setImage(Carta4.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta4.getImage());
+        }
     }
 
     @FXML
     public void preview5() {
-        CartaPreview.setImage(Carta5.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta5.getImage());
+        }
     }
 
     @FXML
     public void preview6() {
-        CartaPreview.setImage(Carta6.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta6.getImage());
+        }
     }
 
     @FXML
     public void preview7() {
-        CartaPreview.setImage(Carta7.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta7.getImage());
+        }
     }
 
     @FXML
     public void preview8() {
-        CartaPreview.setImage(Carta8.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta8.getImage());
+        }
     }
 
     @FXML
     public void preview9() {
-        CartaPreview.setImage(Carta9.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta9.getImage());
+        }
     }
 
     @FXML
     public void preview10() {
-        CartaPreview.setImage(Carta10.getImage());
+        if (jugable){
+            CartaPreview.setImage(Carta10.getImage());
+        }
     }
 
     @FXML
     public void exit() {
-        CartaPreview.setImage(null);
+        if (jugable){
+            CartaPreview.setImage(null);
+        }
+    }
+
+    public boolean isJugable() {
+        return jugable;
+    }
+
+    public static void setJugable(boolean cambio) {
+        jugable = cambio;
     }
     
     @Override
