@@ -1,5 +1,10 @@
 package sample.Conexion;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import sample.Juego.Cartas.Carta;
+import sample.Juego.Cartas.Esbirro;
+import sample.Juego.InventarioCartas;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.io.DataInputStream;
@@ -47,6 +52,11 @@ public class Servidor extends Observable implements Runnable{
                     Cliente.puerto = Integer.parseInt(components[1]);
                     Cliente.ip = components[2];
                     this.ocupado = true;
+                }
+                else if(this.ocupado){
+                    Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);
+                    InventarioCartas inventario = InventarioCartas.getInstance();
+                    inventario.buscarImagen(carta.getImagen());
                 }
                 sc.close();
 

@@ -25,6 +25,9 @@ public class Cliente implements Runnable{
             String Cmapper = objectMapper.writeValueAsString(carta);
             this.mensaje = Cmapper;
         }
+        else if(mensaje.equals("finalizar")){
+            this.mensaje = mensaje;
+        }
         else{
             try {
                 this.puerto = puerto;

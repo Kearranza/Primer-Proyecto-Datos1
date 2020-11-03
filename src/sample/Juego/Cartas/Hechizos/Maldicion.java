@@ -4,7 +4,7 @@ import sample.Juego.Cartas.Carta;
 
 public class Maldicion extends Carta {
     public Maldicion(int coste, String imagen) {
-        super(coste, imagen);
+        super(coste, imagen, "H");
     }
     public void accion(){
 

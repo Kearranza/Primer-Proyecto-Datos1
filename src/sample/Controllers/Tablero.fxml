@@ -36,17 +36,17 @@
             <Font name="System Bold" size="47.0" />
          </font>
       </Label>
-      <Button layoutX="981.0" layoutY="312.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="31.0" prefWidth="92.0" text="End Turn" />
-      <ImageView fx:id="Carta1" fitHeight="175.0" fitWidth="129.0" layoutY="536.0" onMouseClicked="#invocacion" onMouseEntered="#preview1" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta2" fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview2" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta3" fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview3" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta4" fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview4" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta5" fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview5" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta6" fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview6" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta7" fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview7" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview8" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview9" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" onMouseClicked="#invocacion" onMouseEntered="#preview10" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="981.0" layoutY="312.0" mnemonicParsing="false" onAction="#terminarTurno" opacity="0.0" prefHeight="31.0" prefWidth="92.0" text="End Turn" />
+      <ImageView fx:id="Carta1" fitHeight="175.0" fitWidth="129.0" layoutY="540.0" onMouseClicked="#invocacion1" onMouseEntered="#preview1" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta2" fitHeight="175.0" fitWidth="134.0" layoutX="129.0" layoutY="540.0" onMouseClicked="#invocacion2" onMouseEntered="#preview2" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta3" fitHeight="175.0" fitWidth="134.0" layoutX="258.0" layoutY="540.0" onMouseClicked="#invocacion3" onMouseEntered="#preview3" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta4" fitHeight="175.0" fitWidth="134.0" layoutX="379.0" layoutY="540.0" onMouseClicked="#invocacion4" onMouseEntered="#preview4" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta5" fitHeight="175.0" fitWidth="134.0" layoutX="508.0" layoutY="540.0" onMouseClicked="#invocacion5" onMouseEntered="#preview5" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta6" fitHeight="175.0" fitWidth="134.0" layoutX="637.0" layoutY="540.0" onMouseClicked="#invocacion6" onMouseEntered="#preview6" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta7" fitHeight="175.0" fitWidth="134.0" layoutX="766.0" layoutY="540.0" onMouseClicked="#invocacion7" onMouseEntered="#preview7" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta8" fitHeight="175.0" fitWidth="134.0" layoutX="895.0" layoutY="540.0" onMouseClicked="#invocacion8" onMouseEntered="#preview8" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta9" fitHeight="175.0" fitWidth="134.0" layoutX="1024.0" layoutY="540.0" onMouseClicked="#invocacion9" onMouseEntered="#preview9" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Carta10" fitHeight="175.0" fitWidth="134.0" layoutX="1145.0" layoutY="540.0" onMouseClicked="#invocacion10" onMouseEntered="#preview10" onMouseExited="#exit" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="296.0" fitWidth="240.0" layoutX="12.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Juego/Historial.png" />

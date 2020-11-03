@@ -4,7 +4,7 @@ import sample.Juego.Cartas.Carta;
 
 public class FuenteMana extends Carta {
     public FuenteMana(int coste, String imagen) {
-        super(coste, imagen);
+        super(coste, imagen, "S");
     }
     public void accion(){
 

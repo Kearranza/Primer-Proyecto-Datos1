@@ -1,5 +1,6 @@
 package sample.Juego;
 
+import javafx.scene.image.Image;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Juego.Cartas.Carta;
@@ -102,7 +103,7 @@ public class InventarioCartas {
             GranBarrera.setNext(Mimic);
             Vacio Vacio = new Vacio(30,"Secreto/Vacio.png");
             Mimic.setNext(Vacio);
-            Carta Incognita = new Carta(0,"Secretos/Secreto/Incognita.png");
+            Carta Incognita = new Carta(0,"Secretos/Secreto/Incognita.png", "");
             Vacio.setNext(Incognita);
             this.size = 41;
         }
@@ -117,5 +118,16 @@ public class InventarioCartas {
         }
         return current;
     }
+    public Object buscarImagen(String imagen){
+        Object current = this.head;
+        for(int i=0 ; i < this.size;i++){
+            if (imagen == ((Carta) current).getImagen()){
+                System.out.println("Hola, funco");
+                break;
+            }
+            current = ((Carta) current).getNext();
+        }
+        return current;
 
+    }
     }

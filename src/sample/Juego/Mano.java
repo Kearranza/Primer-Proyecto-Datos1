@@ -60,7 +60,18 @@ public class Mano {
             }
         }
     }
-
+    public Carta buscar(int indice){
+        Carta current = this.first;
+        for (int i = 0; i < this.size;i++){
+            if (i == indice){
+                break;
+            }
+            else{
+                current = current.getNextMano();
+            }
+        }
+        return current;
+    }
 
     public void add(Carta carta){
         if (this.first == null){
