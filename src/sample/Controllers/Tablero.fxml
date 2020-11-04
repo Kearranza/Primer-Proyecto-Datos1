@@ -72,15 +72,5 @@
             <Image url="@../Juego/Mazo.gif" />
          </image>
       </ImageView>
-      <Label layoutX="65.0" layoutY="198.0" prefHeight="30.0" prefWidth="92.0" text="Turno N° ">
-         <font>
-            <Font name="System Bold Italic" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabelTurnos" layoutX="157.0" layoutY="198.0" prefHeight="30.0" prefWidth="68.0" text="1">
-         <font>
-            <Font name="System Bold Italic" size="20.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

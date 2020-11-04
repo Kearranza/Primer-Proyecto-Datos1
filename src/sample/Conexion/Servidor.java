@@ -1,6 +1,7 @@
 package sample.Conexion;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.InventarioCartas;
@@ -52,6 +53,10 @@ public class Servidor extends Observable implements Runnable{
                     Cliente.puerto = Integer.parseInt(components[1]);
                     Cliente.ip = components[2];
                     this.ocupado = true;
+                }else if(mensaje.equals("finalizar")){
+                    ControllerTablero.setJugable(true);
+                    ControllerTablero.aumentoTurno();
+                    System.out.println("holaa");
                 }
                 else if(this.ocupado){
                     Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);

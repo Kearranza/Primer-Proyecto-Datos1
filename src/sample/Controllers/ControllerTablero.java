@@ -36,13 +36,17 @@ public class ControllerTablero implements Initializable {
     private ImageView[] OrdenCartas = new ImageView[10];
     @FXML
     private ImageView MazoMentira;
-    @FXML
-    private static Label LabelTurnos;
 
     @FXML
-    public void terminarTurno(){
-        cambiarTurno();
-        setJugable(!jugable);
+    public void terminarTurno() throws IOException {
+        if (jugable){
+            Cliente c = new Cliente(Cliente.puerto, "finalizar", null, Cliente.ip);
+            Thread tc = new Thread(c);
+            tc.start();
+            aumentoTurno();
+            setJugable(!jugable);
+            roboGUI();
+        }
     }
     public void roboGUI(){
         Jugador jugador = Jugador.getInstance();
@@ -139,15 +143,12 @@ public class ControllerTablero implements Initializable {
         }
     }
 
-    public boolean isJugable() {
-        return jugable;
-    }
-
     public static void setJugable(boolean cambio) {
         jugable = cambio;
     }
-    public static void cambiarTurno(){
-        LabelTurnos.setText(String.valueOf(++turnos));
+
+    public static void aumentoTurno() {
+        ControllerTablero.turnos++;
     }
 
     @FXML

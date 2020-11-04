@@ -25,10 +25,8 @@ public class Cliente implements Runnable{
             ObjectMapper objectMapper = new ObjectMapper();
             String Cmapper = objectMapper.writeValueAsString(carta);
             this.mensaje = Cmapper;
-        }
-        else if(mensaje.equals("finalizar")){
-            ControllerTablero.setJugable(false);
-            ControllerTablero.cambiarTurno();
+        }else if(mensaje.equals("finalizar")){
+            this.mensaje = mensaje;
         }
         else{
             try {
