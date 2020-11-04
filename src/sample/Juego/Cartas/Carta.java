@@ -12,13 +12,20 @@ public class Carta {
     private String imagen;
     private String tipo;
 
+
+    public Carta(int coste, String imagen, String tipo) {
+        this.coste = coste;
+        this.imagen = imagen;
+        this.tipo = tipo;
+    }
     @JsonCreator
-    public Carta(@JsonProperty("next") Carta next,@JsonProperty("nextMano") Carta nextMano,@JsonProperty("prevMano") Carta prevMano ,@JsonProperty("coste") int coste, @JsonProperty("imagen") String imagen) {
+    public Carta(@JsonProperty("next") Carta next,@JsonProperty("nextMano") Carta nextMano,@JsonProperty("prevMano") Carta prevMano ,@JsonProperty("coste") int coste, @JsonProperty("imagen") String imagen, @JsonProperty("tipo") String tipo) {
         this.next = next;
         this.nextMano = nextMano;
         this.prevMano = prevMano;
         this.coste = coste;
         this.imagen = imagen;
+        this.tipo = tipo;
 
     }
 
@@ -30,11 +37,6 @@ public class Carta {
         this.tipo = tipo;
     }
 
-    public Carta(int coste, String imagen, String tipo) {
-        this.coste = coste;
-        this.imagen = imagen;
-        this.tipo = tipo;
-    }
     public void setCoste(int coste) {
         this.coste = coste;
     }

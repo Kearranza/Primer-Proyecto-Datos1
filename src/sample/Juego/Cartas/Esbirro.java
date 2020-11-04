@@ -15,7 +15,7 @@ public class Esbirro extends Carta {
     }
 
     public void accion(){
-        Jugador.getInstance().cambioVida(-this.ataque);
-
+        Jugador jugador = Jugador.getInstance();
+        jugador.cambioVida(-this.ataque);
     }
 }

@@ -56,7 +56,15 @@ public class Servidor extends Observable implements Runnable{
                 else if(this.ocupado){
                     Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);
                     InventarioCartas inventario = InventarioCartas.getInstance();
-                    inventario.buscarImagen(carta.getImagen());
+                    if (carta.getTipo().equals("E")){
+                        ((Esbirro) inventario.buscarImagen(carta.getImagen())).accion();
+                    }
+                    else if(carta.getTipo().equals("H")){
+                        System.out.println("H");
+                    }
+                    else{
+                        System.out.println("S");
+                    }
                 }
                 sc.close();
 
