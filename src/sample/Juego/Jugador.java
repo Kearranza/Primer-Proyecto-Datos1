@@ -63,6 +63,7 @@ public class Jugador {
     public void robar(){
         Carta robada = this.mazo.eliminar();
         this.mano.add(robada);
+
     }
     public void invocar(){
 

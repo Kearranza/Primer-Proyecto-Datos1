@@ -1,6 +1,7 @@
 package sample.Conexion;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
 
 import java.io.DataOutputStream;
@@ -26,7 +27,8 @@ public class Cliente implements Runnable{
             this.mensaje = Cmapper;
         }
         else if(mensaje.equals("finalizar")){
-            this.mensaje = mensaje;
+            ControllerTablero.setJugable(false);
+            ControllerTablero.cambiarTurno();
         }
         else{
             try {

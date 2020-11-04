@@ -5,6 +5,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class ControllerTablero implements Initializable{
     private static boolean jugable;
-    private int turnos = 1;
+    private static int turnos = 1;
     @FXML
     private TextArea historial;
     @FXML
@@ -36,28 +37,12 @@ public class ControllerTablero implements Initializable{
     @FXML
     private ImageView MazoMentira;
     @FXML
-    private Label LabelTurnos;
+    private static Label LabelTurnos;
 
     @FXML
     public void terminarTurno(){
-        Jugador jugador = Jugador.getInstance();
-        if (jugador.getMano().getSize() < 10) {
-            Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
-            t.play();
-            t.setOnFinished(event -> {
-                jugador.robar();
-                Carta current = jugador.getMano().getFirst();
-                for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                    OrdenCartas[i].setImage(image);
-                    current = current.getNextMano();
-                }
-            });
-            MazoMentira.setLayoutX(1091);
-        }
+        cambiarTurno();
         setJugable(!jugable);
-        LabelTurnos.setText(String.valueOf(++this.turnos));
-
     }
     public void roboGUI(){
         Jugador jugador = Jugador.getInstance();
@@ -161,6 +146,10 @@ public class ControllerTablero implements Initializable{
     public static void setJugable(boolean cambio) {
         jugable = cambio;
     }
+    public static void cambiarTurno(){
+        LabelTurnos.setText(String.valueOf(++turnos));
+    }
+
     @FXML
     public void invocacion1() throws IOException {
         if ((jugable) && (Carta1.getImage() != null)) {
@@ -359,6 +348,8 @@ public class ControllerTablero implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Tablero.fxml"));
+        ControllerTablero controller = loader.getController();
         OrdenCartas[0] = Carta1;
         OrdenCartas[1] = Carta2;
         OrdenCartas[2] = Carta3;
