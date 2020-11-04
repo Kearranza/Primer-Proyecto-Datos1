@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerTablero">
+<AnchorPane fx:id="ventana" onMouseMoved="#update" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ControllerTablero">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0">
          <image>
@@ -52,7 +52,7 @@
             <Image url="@../Juego/Historial.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="historial" editable="false" layoutX="40.0" layoutY="237.0" opacity="0.65" prefHeight="182.0" prefWidth="178.0" style="-fx-control-inner-background: rgba(221,180,119, 1); -fx-text-fill: #000000; -fx-background-color: rgba(221,180,119, 0,5);" wrapText="true">
+      <TextArea fx:id="historial" editable="false" layoutX="40.0" layoutY="237.0" onMouseMoved="#update" opacity="0.65" prefHeight="182.0" prefWidth="178.0" style="-fx-control-inner-background: rgba(221,180,119, 1); -fx-text-fill: #000000; -fx-background-color: rgba(221,180,119, 0,5);" wrapText="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

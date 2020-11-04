@@ -26,7 +26,7 @@ import java.net.URL;
 import java.security.cert.TrustAnchor;
 import java.util.ResourceBundle;
 
-public class ControllerTablero implements Initializable {
+public class ControllerTablero implements Initializable{
     private static boolean jugable;
     private static int turnos = 1;
     @FXML
@@ -168,6 +168,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion2() throws IOException {
@@ -186,6 +187,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
 
         }
     }
@@ -205,6 +207,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
 
         }
     }
@@ -224,6 +227,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion5() throws IOException {
@@ -242,6 +246,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion6() throws IOException {
@@ -260,6 +265,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion7() throws IOException {
@@ -278,6 +284,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion8() throws IOException {
@@ -296,6 +303,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion9() throws IOException {
@@ -314,6 +322,7 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
     public void invocacion10() throws IOException {
@@ -332,9 +341,12 @@ public class ControllerTablero implements Initializable {
                 current = current.getNextMano();
             }
             OrdenCartas[jugador.getMano().getSize()].setImage(null);
+            CartaPreview.setImage(null);
         }
     }
-
+    public void update(){
+        System.out.println("Hola");
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Tablero.fxml"));
