@@ -103,7 +103,7 @@ public class InventarioCartas {
             GranBarrera.setNext(Mimic);
             Vacio Vacio = new Vacio(30,"Secreto/Vacio.png");
             Mimic.setNext(Vacio);
-            Carta Incognita = new Carta(0,"Secretos/Secreto/Incognita.png", "");
+            Carta Incognita = new Carta(0,"Secreto/Incognita.png", "");
             Vacio.setNext(Incognita);
             this.size = 41;
         }
@@ -121,7 +121,7 @@ public class InventarioCartas {
     public Object buscarImagen(String imagen){
         Object current = this.head;
         for(int i=0 ; i < this.size;i++){
-            if (imagen == ((Carta) current).getImagen()){
+            if (imagen.equals(((Carta) current).getImagen())){
                 System.out.println("Hola, funco");
                 break;
             }
