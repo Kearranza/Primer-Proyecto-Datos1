@@ -26,26 +26,23 @@ public class Jugador {
         this.mazo = mazo;
     }
     public int getPv() {
-        return pv;
+        return this.pv;
     }
 
     public void setPv(int pv) { this.pv = pv; }
 
     public int getMana() {
-        return mana;
+        return this.mana;
     }
 
     public void setMana(int mana) {
         this.mana = mana;
     }
 
-    public Mano getMano() {
-        return mano;
-    }
-
+    public Mano getMano() { return this.mano; }
 
     public Mazo getMazo() {
-        return mazo;
+        return this.mazo;
     }
 
     public void cambioVida(int valor){
@@ -57,6 +54,14 @@ public class Jugador {
         }
         else{
             this.pv += valor;
+        }
+    }
+    public void cambioMana(int valor){
+        if ((this.mana += valor)>100){
+            Jugador.getInstance().setMana(100);
+        }
+        else{
+            this.mana =this.mana + valor;
         }
     }
 

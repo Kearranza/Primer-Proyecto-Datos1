@@ -5,6 +5,7 @@ import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.InventarioCartas;
+import sample.Juego.Jugador;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -56,7 +57,7 @@ public class Servidor extends Observable implements Runnable{
                 }else if(mensaje.equals("finalizar")){
                     ControllerTablero.setJugable(true);
                     ControllerTablero.aumentoTurno();
-                    System.out.println("holaa");
+                    Jugador.getInstance().cambioMana(25);
                 }
                 else if(this.ocupado){
                     Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);

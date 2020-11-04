@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Conexion.Cliente;
+import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.InventarioCartas;
 import sample.Juego.Jugador;
@@ -32,10 +33,11 @@ public class ControllerTablero implements Initializable{
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview;
+    private ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
     private ImageView[] OrdenCartas = new ImageView[10];
     @FXML
-    private ImageView MazoMentira;
+    private Label LabelTurnos,VidaJugador,VidaAdversario,ManaJugador,ManaAdversario;
+
 
     @FXML
     public void terminarTurno() throws IOException {
@@ -46,6 +48,7 @@ public class ControllerTablero implements Initializable{
             aumentoTurno();
             setJugable(!jugable);
             roboGUI();
+            Adversario.getInstance().cambioMana(25);
         }
     }
     public void roboGUI(){
@@ -66,286 +69,275 @@ public class ControllerTablero implements Initializable{
         }
     }
 
+    public static void setJugable(boolean cambio) { jugable = cambio; }
+
+    public static void aumentoTurno() { ControllerTablero.turnos++; }
+
     @FXML
+    public void update(){
+        Adversario.getInstance();
+        Jugador.getInstance();
+        LabelTurnos.setText(String.valueOf(turnos));
+        VidaJugador.setText(String.valueOf(Jugador.getInstance().getPv()));
+        ManaJugador.setText(String.valueOf(Jugador.getInstance().getMana()));
+        VidaAdversario.setText(String.valueOf(Adversario.getInstance().getPv()));
+        ManaAdversario.setText(String.valueOf(Adversario.getInstance().getMana()));
+
+        //System.out.println("Hola");
+    }
     public void preview1() {
-        if (jugable){
-            CartaPreview.setImage(Carta1.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta1.getImage()); }
     }
-
-    @FXML
     public void preview2() {
-        if (jugable){
-            CartaPreview.setImage(Carta2.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta2.getImage()); }
     }
-
-    @FXML
     public void preview3() {
-        if (jugable){
-            CartaPreview.setImage(Carta3.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta3.getImage()); }
     }
-
-    @FXML
     public void preview4() {
-        if (jugable){
-            CartaPreview.setImage(Carta4.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta4.getImage()); }
     }
-
-    @FXML
     public void preview5() {
-        if (jugable){
-            CartaPreview.setImage(Carta5.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta5.getImage()); }
     }
-
-    @FXML
     public void preview6() {
-        if (jugable){
-            CartaPreview.setImage(Carta6.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta6.getImage()); }
     }
-
-    @FXML
     public void preview7() {
-        if (jugable){
-            CartaPreview.setImage(Carta7.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta7.getImage()); }
     }
-
-    @FXML
     public void preview8() {
-        if (jugable){
-            CartaPreview.setImage(Carta8.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta8.getImage()); }
     }
-
-    @FXML
     public void preview9() {
-        if (jugable){
-            CartaPreview.setImage(Carta9.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta9.getImage()); }
     }
-
-    @FXML
     public void preview10() {
-        if (jugable){
-            CartaPreview.setImage(Carta10.getImage());
-        }
+        if (jugable){ CartaPreview.setImage(Carta10.getImage()); }
     }
-
-    @FXML
     public void exit() {
-        if (jugable){
-            CartaPreview.setImage(null);
-        }
+        if (jugable){ CartaPreview.setImage(null); }
     }
-
-    public static void setJugable(boolean cambio) {
-        jugable = cambio;
-    }
-
-    public static void aumentoTurno() {
-        ControllerTablero.turnos++;
-    }
-
     @FXML
     public void invocacion1() throws IOException {
         if ((jugable) && (Carta1.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(0);
-            Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()){
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion2() throws IOException {
         if ((jugable) && (Carta2.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(1);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()){
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
-
         }
     }
     public void invocacion3() throws IOException {
         if ((jugable) && (Carta3.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(2);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
-
         }
     }
     public void invocacion4() throws IOException {
         if ((jugable) && (Carta4.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(3);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion5() throws IOException {
         if ((jugable) && (Carta5.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(4);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion6() throws IOException {
         if ((jugable) && (Carta6.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(5);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion7() throws IOException {
         if ((jugable) && (Carta7.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(6);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion8() throws IOException {
         if ((jugable) && (Carta8.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(7);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion9() throws IOException {
         if ((jugable) && (Carta9.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(8);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
     }
     public void invocacion10() throws IOException {
         if ((jugable) && (Carta10.getImage() != null)) {
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(9);
-            Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
-            Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            jugador.getMano().remove(carta);
-            Carta current = jugador.getMano().getFirst();
-            for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                OrdenCartas[i].setImage(image);
-                current = current.getNextMano();
+            if(carta.getCoste()<=jugador.getMana()) {
+                jugador.cambioMana(-carta.getCoste());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                jugador.getMano().remove(carta);
+                Carta current = jugador.getMano().getFirst();
+                for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                    OrdenCartas[i].setImage(image);
+                    current = current.getNextMano();
+                }
+                OrdenCartas[jugador.getMano().getSize()].setImage(null);
+                CartaPreview.setImage(null);
             }
-            OrdenCartas[jugador.getMano().getSize()].setImage(null);
-            CartaPreview.setImage(null);
         }
-    }
-    public void update(){
-        System.out.println("Hola");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
