@@ -20,10 +20,10 @@ public class Adversario {
     public int getMana() { return this.mana; }
 
     public void cambioVida(int valor){
-        if ((this.pv += valor)>100){
+        if ((this.pv + valor)>100){
             Adversario.getInstance().setPv(100);
         }
-        else if((this.pv += valor)<0){
+        else if((this.pv + valor)<0){
             Adversario.getInstance().setPv(0);
         }
         else{
