@@ -4,7 +4,7 @@ import sample.Juego.Cartas.Carta;
 
 public class Apaciguar extends Carta {
     public Apaciguar(int coste, String imagen) {
-        super(coste, imagen, "S");
+        super(coste, imagen, "S", false);
     }
     public void accion(){
 

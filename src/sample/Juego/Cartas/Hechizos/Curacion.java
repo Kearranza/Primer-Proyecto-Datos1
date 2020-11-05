@@ -5,7 +5,7 @@ import sample.Juego.Jugador;
 
 public class Curacion extends Carta {
     public Curacion(int coste, String imagen) {
-        super(coste, imagen, "H");
+        super(coste, imagen, "H", false);
     }
 
     public void accion(){

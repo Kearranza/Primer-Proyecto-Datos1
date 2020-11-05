@@ -1,6 +1,5 @@
 package sample.Juego.Cartas;
 
-import javafx.scene.image.Image;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -11,12 +10,18 @@ public class Carta {
     private int coste;
     private String imagen;
     private String tipo;
+    private String nombre;
+    private boolean favor;
 
 
-    public Carta(int coste, String imagen, String tipo) {
+    public Carta(int coste, String imagen, String tipo, boolean favor) {
         this.coste = coste;
         this.imagen = imagen;
         this.tipo = tipo;
+        String[] components = imagen.split("/");
+        String[] component = components[1].split("\\.");
+        this.nombre = component[0];
+        this.favor = favor;
     }
     @JsonCreator
     public Carta(@JsonProperty("next") Carta next,@JsonProperty("nextMano") Carta nextMano,@JsonProperty("prevMano") Carta prevMano ,@JsonProperty("coste") int coste, @JsonProperty("imagen") String imagen, @JsonProperty("tipo") String tipo) {
@@ -26,6 +31,9 @@ public class Carta {
         this.coste = coste;
         this.imagen = imagen;
         this.tipo = tipo;
+        String[] components = imagen.split("/");
+        String[] component = components[1].split("\\.");
+        this.nombre = component[0];
 
     }
 

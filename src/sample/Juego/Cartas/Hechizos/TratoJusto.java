@@ -4,7 +4,7 @@ import sample.Juego.Cartas.Carta;
 
 public class TratoJusto extends Carta {
     public TratoJusto(int coste, String imagen) {
-        super(coste, imagen,"H");
+        super(coste, imagen,"H", true);
     }
     public void accion(){
 
