@@ -48,10 +48,10 @@ public class Jugador {
     }
 
     public void cambioVida(int valor){
-        if ((this.pv += valor)>100){
+        if ((this.pv + valor)>100){
             Jugador.getInstance().setPv(100);
         }
-        else if((this.pv += valor)<0){
+        else if((this.pv + valor)<0){
             Jugador.getInstance().setPv(0);
         }
         else{
@@ -59,7 +59,7 @@ public class Jugador {
         }
     }
     public void cambioMana(int valor){
-        if ((this.mana += valor)>100){
+        if ((this.mana + valor)>100){
             Jugador.getInstance().setMana(100);
         }
         else{
