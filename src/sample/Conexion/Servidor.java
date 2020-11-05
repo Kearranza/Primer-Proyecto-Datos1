@@ -40,6 +40,10 @@ public class Servidor extends Observable implements Runnable{
         return ocupado;
     }
 
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
+    }
+
     @Override
     public void run() {
         Socket sc;

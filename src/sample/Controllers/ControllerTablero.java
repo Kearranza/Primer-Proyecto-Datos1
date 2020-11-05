@@ -75,15 +75,12 @@ public class ControllerTablero implements Initializable{
 
     @FXML
     public void update(){
-        Adversario.getInstance();
-        Jugador.getInstance();
         LabelTurnos.setText(String.valueOf(turnos));
         VidaJugador.setText(String.valueOf(Jugador.getInstance().getPv()));
         ManaJugador.setText(String.valueOf(Jugador.getInstance().getMana()));
         VidaAdversario.setText(String.valueOf(Adversario.getInstance().getPv()));
         ManaAdversario.setText(String.valueOf(Adversario.getInstance().getMana()));
 
-        //System.out.println("Hola");
     }
     public void preview1() {
         if (jugable){ CartaPreview.setImage(Carta1.getImage()); }
@@ -322,7 +319,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(9);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
+                jugador.cambioMana(-(carta.getCoste()));
                 Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);

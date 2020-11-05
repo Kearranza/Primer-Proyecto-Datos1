@@ -99,6 +99,7 @@ public class ControllerLogin implements Initializable {
                 throw new IllegalArgumentException();
             }
             else{
+                s.setOcupado(true);
                 Thread tc = new Thread(c);
                 tc.start();
                 Thread ts = new Thread(s);

@@ -4,8 +4,8 @@ import sample.Juego.Cartas.Carta;
 
 public class Jugador {
     public static Jugador instance = null;
-    private int pv = 100;
-    private int mana = 20;
+    private int pv;
+    private int mana;
     private Mano mano;
     private Mazo mazo;
 
@@ -20,6 +20,8 @@ public class Jugador {
         Mano mano = new Mano();
         this.mano = mano;
         this.crearMazo();
+        this.mana = 20;
+        this.pv = 100;
     }
     public void crearMazo(){
         Mazo mazo = new Mazo(this.mano);
@@ -62,6 +64,7 @@ public class Jugador {
         }
         else{
             this.mana =this.mana + valor;
+
         }
     }
 
