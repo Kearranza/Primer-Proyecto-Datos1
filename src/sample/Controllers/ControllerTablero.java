@@ -122,7 +122,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(0);
             if(carta.getCoste()<=jugador.getMana()){
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -144,7 +144,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(1);
             if(carta.getCoste()<=jugador.getMana()){
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -166,7 +166,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(2);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -188,7 +188,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(3);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -210,7 +210,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(4);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -232,7 +232,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(5);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -254,7 +254,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(6);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -276,7 +276,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(7);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -298,7 +298,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(8);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();
@@ -320,7 +320,7 @@ public class ControllerTablero implements Initializable{
             Carta carta = jugador.getMano().buscar(9);
             if(carta.getCoste()<=jugador.getMana()) {
                 jugador.cambioMana(-(carta.getCoste()));
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo());
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                 Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                 Thread tc = new Thread(c);
                 tc.start();

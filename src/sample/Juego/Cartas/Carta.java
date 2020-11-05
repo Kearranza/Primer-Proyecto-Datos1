@@ -37,6 +37,14 @@ public class Carta {
 
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public boolean isFavor() {
+        return favor;
+    }
+
     public String getTipo() {
         return tipo;
     }
