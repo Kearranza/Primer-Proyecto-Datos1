@@ -57,7 +57,7 @@
             <Insets />
          </opaqueInsets>
          <font>
-            <Font name="French Script MT" size="27.0" />
+            <Font name="Calibri Bold" size="18.0" />
          </font>
       </TextArea>
       <ImageView fx:id="Carta31" fitHeight="175.0" fitWidth="134.0" layoutX="263.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />

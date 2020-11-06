@@ -15,7 +15,7 @@ public class TratoJusto extends Carta {
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Adversario adversario = Adversario.getInstance();
-        Cliente c = new Cliente(Cliente.puerto, "daño"+"|"+ String.valueOf(jugador.getPv()- adversario.getPv()), null, Cliente.ip);
+        Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+ String.valueOf(adversario.getPv()- jugador.getPv()), null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
         jugador.setPv(adversario.getPv());

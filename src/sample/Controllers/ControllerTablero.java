@@ -30,10 +30,10 @@ import java.util.ResourceBundle;
 public class ControllerTablero implements Initializable{
     private static boolean jugable;
     private static boolean congelado = false;
-    private static boolean sangre = false;
+
     private static int gratis = 0;
     private static int turnos = 1;
-    private static String acciones;
+    private static String acciones = "Historial"+"\n";
     @FXML
     private TextArea historial;
     @FXML
@@ -48,14 +48,6 @@ public class ControllerTablero implements Initializable{
 
     public static String getAcciones() {
         return acciones;
-    }
-
-    public static boolean isSangre() {
-        return sangre;
-    }
-
-    public static void setSangre(boolean sangre) {
-        ControllerTablero.sangre = sangre;
     }
 
     public static int getGratis() {
@@ -82,7 +74,6 @@ public class ControllerTablero implements Initializable{
             Adversario.getInstance().cambioMana(25);
             setCongelado(false);
             setGratis(0);
-            setSangre(false);
         }
     }
     public void roboGUI(){
@@ -152,19 +143,16 @@ public class ControllerTablero implements Initializable{
     }
     @FXML
     public void invocacion1() throws IOException {
-        System.out.println("1");
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(0);
         if(carta.getNombre().equals("Vapor")){
             setCongelado(false);
         }
-        System.out.println("2");
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
                     roboGUI();
                 }
-                System.out.println("3");
                 jugador.invocar(0);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {

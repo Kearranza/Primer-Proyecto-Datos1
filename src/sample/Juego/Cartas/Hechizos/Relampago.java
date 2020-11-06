@@ -13,7 +13,7 @@ public class Relampago extends Carta {
 
     public void accion() throws IOException {
         Jugador.getInstance().cambioVida(-10);
-        Cliente c = new Cliente(Cliente.puerto, "daño"+"|"+"10", null, Cliente.ip);
+        Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+"-10", null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
 

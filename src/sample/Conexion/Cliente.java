@@ -29,9 +29,12 @@ public class Cliente implements Runnable{
         }else if(mensaje.equals("finalizar")){
             this.mensaje = mensaje;
         }
-        else if(components[0].equals("daño")){
+        else if(components[0].equals("vida")){
             this.mensaje = mensaje;
 
+        }
+        else if(components[0].equals("mana")){
+            this.mensaje = mensaje;
         }
         else{
             try {

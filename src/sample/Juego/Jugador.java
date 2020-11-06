@@ -83,12 +83,7 @@ public class Jugador {
         Carta carta = this.getMano().buscar(i);
         ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Jugador: "+carta.getNombre()+"\n");
         if (ControllerTablero.getGratis() == 0){
-            if (!ControllerTablero.isSangre()){
-                this.cambioMana(-(carta.getCoste()));
-            }
-            else{
-                this.cambioVida(-(carta.getCoste()));
-            }
+            this.cambioVida(-(carta.getCoste()));
         }
         if (ControllerTablero.getGratis() > 0){
             ControllerTablero.setGratis(ControllerTablero.getGratis()-1);

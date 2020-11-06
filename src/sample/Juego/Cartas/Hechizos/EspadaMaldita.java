@@ -13,7 +13,7 @@ public class EspadaMaldita extends Carta {
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.setPv(jugador.getPv()/2);
-        Cliente c = new Cliente(Cliente.puerto, "daño"+"|"+ String.valueOf(jugador.getPv()/2), null, Cliente.ip);
+        Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+ String.valueOf(-(jugador.getPv()/2)), null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
     }

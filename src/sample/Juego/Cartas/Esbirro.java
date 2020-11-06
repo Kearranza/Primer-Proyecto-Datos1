@@ -20,7 +20,7 @@ public class Esbirro extends Carta {
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.cambioVida(-this.ataque);
-        Cliente c = new Cliente(Cliente.puerto, "daño"+"|"+ String.valueOf(this.ataque), null, Cliente.ip);
+        Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+ String.valueOf(-this.ataque), null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
     }

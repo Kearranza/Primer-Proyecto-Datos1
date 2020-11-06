@@ -14,7 +14,7 @@ public class Maldicion extends Carta {
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.cambioVida(-(jugador.getMano().getSize())*10);
-        Cliente c = new Cliente (Cliente.puerto, "daño"+"|"+ String.valueOf((jugador.getMano().getSize())*10), null, Cliente.ip);
+        Cliente c = new Cliente (Cliente.puerto, "vida"+"|"+ String.valueOf(-(jugador.getMano().getSize())*10), null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
     }

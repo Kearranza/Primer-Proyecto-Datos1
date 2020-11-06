@@ -13,7 +13,7 @@ public class Calamidad extends Carta {
 
     public void accion() throws IOException {
         Jugador.getInstance().cambioVida(-20);
-        Cliente c = new Cliente(Cliente.puerto, "daño"+"|"+"20", null, Cliente.ip);
+        Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+"-20", null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
     }
