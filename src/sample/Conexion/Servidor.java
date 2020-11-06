@@ -2,8 +2,10 @@ package sample.Conexion;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import sample.Controllers.ControllerTablero;
+import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
+import sample.Juego.Cartas.Hechizos.*;
 import sample.Juego.InventarioCartas;
 import sample.Juego.Jugador;
 
@@ -58,22 +60,74 @@ public class Servidor extends Observable implements Runnable{
                     Cliente.puerto = Integer.parseInt(components[1]);
                     Cliente.ip = components[2];
                     this.ocupado = true;
+
                 }else if(mensaje.equals("finalizar")){
                     ControllerTablero.setJugable(true);
                     ControllerTablero.aumentoTurno();
                     Jugador.getInstance().cambioMana(25);
                 }
+                else if(components[0].equals("daño")){
+                    int daño= Integer.parseInt(components[1]);
+                    Adversario.getInstance().cambioVida(-daño);
+                }
                 else if(this.ocupado){
+
                     Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);
                     InventarioCartas inventario = InventarioCartas.getInstance();
                     if (carta.getTipo().equals("E")){
                         ((Esbirro) inventario.buscarImagen(carta.getImagen())).accion();
+                        ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                        Adversario.getInstance().cambioMana(-carta.getCoste());
                     }
                     else if(carta.getTipo().equals("H")){
-                        System.out.println("H");
+                        if (carta.isFavor()){
+                            ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                            Adversario.getInstance().cambioMana(-carta.getCoste());
+                        }
+                        else{
+                            if (carta.getNombre().equals("Calamidad")){
+                                ((Calamidad) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Cero")){
+                                ((CeroAbsoluto) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Codicia")){
+                                ((Codicia) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Espada")){
+                                ((EspadaMaldita) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Maldicion")){
+                                ((Maldicion) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Relampago")){
+                                ((Relampago) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                            else if (carta.getNombre().equals("Trato")){
+                                ((TratoJusto) inventario.buscarImagen(carta.getImagen())).accion();
+                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
+                                Adversario.getInstance().cambioMana(-carta.getCoste());
+                            }
+                        }
                     }
-                    else{
+                    else if (carta.getTipo().equals("S")){
                         System.out.println("S");
+                    }
+                    else if(carta.getTipo().equals("R")){
+                        Jugador jugador = Jugador.getInstance();
+                        jugador.getMano().add(carta);
                     }
                 }
                 sc.close();

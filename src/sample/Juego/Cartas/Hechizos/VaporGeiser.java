@@ -6,7 +6,7 @@ import sample.Juego.Jugador;
 
 public class VaporGeiser extends Carta {
     public VaporGeiser(int coste, String imagen) {
-        super(coste, imagen,"H", false);
+        super(coste, imagen,"H", true);
     }
 
     public void accion(){
