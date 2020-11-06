@@ -20,9 +20,9 @@ public class Carta {
         this.coste = coste;
         this.imagen = imagen;
         this.tipo = tipo;
-        //String[] components = imagen.split("/");
-        //String[] component = components[1].split("\\.");
-        //this.nombre = component[0];
+        String[] components = imagen.split("/");
+        String[] component = components[1].split("\\.");
+        this.nombre = component[0];
         this.favor = favor;
     }
     @JsonCreator
