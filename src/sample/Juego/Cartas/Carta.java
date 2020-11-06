@@ -6,7 +6,9 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Carta.
+ *
  */
 public class Carta {
     private Carta next = null;

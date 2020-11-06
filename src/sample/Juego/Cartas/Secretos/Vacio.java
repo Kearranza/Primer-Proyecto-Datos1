@@ -3,6 +3,7 @@ package sample.Juego.Cartas.Secretos;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Vacio.
  */
 public class Vacio extends Carta {
@@ -15,6 +16,7 @@ public class Vacio extends Carta {
     public Vacio(int coste, String imagen) {
         super(coste, imagen, "S", false);
     }
+
     public void accion(){
 
     }

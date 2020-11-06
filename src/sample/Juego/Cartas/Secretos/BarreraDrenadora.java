@@ -3,7 +3,9 @@ package sample.Juego.Cartas.Secretos;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Barrera drenadora.
+ *
  */
 public class BarreraDrenadora extends Carta {
     /**

@@ -4,7 +4,9 @@ import jdk.nashorn.internal.ir.CatchNode;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Mano.
+ *
  */
 public class Mano {
     private Carta first =null;

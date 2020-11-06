@@ -3,7 +3,9 @@ package sample.Juego.Cartas.Hechizos;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Robar.
+ *
  */
 public class Robar extends Carta {
     /**

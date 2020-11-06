@@ -29,7 +29,9 @@ import java.util.ResourceBundle;
 
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Controller tablero.
+ *
  */
 public class ControllerTablero implements Initializable {
     private static boolean jugable;

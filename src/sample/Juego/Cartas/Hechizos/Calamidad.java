@@ -7,6 +7,7 @@ import sample.Juego.Jugador;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Calamidad.
  */
 public class Calamidad extends Carta {

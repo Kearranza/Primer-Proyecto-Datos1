@@ -1,7 +1,9 @@
 package sample.Juego;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Adversario.
+ *
  */
 public class Adversario {
     /**

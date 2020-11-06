@@ -7,7 +7,9 @@ import sample.Juego.Jugador;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Espada maldita.
+ *
  */
 public class EspadaMaldita extends Carta {
     /**

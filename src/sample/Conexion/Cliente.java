@@ -14,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Cliente.
+ *
  */
 public class Cliente implements Runnable{
 

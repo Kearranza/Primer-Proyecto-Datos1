@@ -6,7 +6,9 @@ import sample.Juego.Jugador;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Esbirro.
+ *
  */
 public class Esbirro extends Carta {
     private int ataque;

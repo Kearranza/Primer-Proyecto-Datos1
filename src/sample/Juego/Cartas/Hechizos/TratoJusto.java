@@ -8,7 +8,9 @@ import sample.Juego.Jugador;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Trato justo.
+ *
  */
 public class TratoJusto extends Carta {
     /**

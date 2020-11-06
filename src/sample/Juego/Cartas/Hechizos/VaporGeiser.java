@@ -5,7 +5,9 @@ import sample.Juego.Cartas.Carta;
 import sample.Juego.Jugador;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Vapor geiser.
+ *
  */
 public class VaporGeiser extends Carta {
     /**

@@ -9,7 +9,9 @@ import sample.Juego.Cartas.Hechizos.*;
 import java.io.IOException;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Jugador.
+ *
  */
 public class Jugador {
     /**

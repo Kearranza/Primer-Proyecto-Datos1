@@ -4,7 +4,9 @@ import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Poder supremo.
+ *
  */
 public class PoderSupremo extends Carta {
     /**

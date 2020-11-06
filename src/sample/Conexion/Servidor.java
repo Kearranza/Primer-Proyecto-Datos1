@@ -18,7 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Servidor.
+ *
  */
 public class Servidor extends Observable implements Runnable{
 

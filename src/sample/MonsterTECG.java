@@ -15,7 +15,9 @@ import sample.Juego.Mano;
 import sample.Juego.Mazo;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Monster tecg.
+ *
  */
 public class MonsterTECG extends Application {
 

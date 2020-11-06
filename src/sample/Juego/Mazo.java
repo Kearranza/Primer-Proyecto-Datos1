@@ -3,7 +3,9 @@ package sample.Juego;
 import sample.Juego.Cartas.Carta;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Mazo.
+ *
  */
 public class Mazo {
     private int top = -1;

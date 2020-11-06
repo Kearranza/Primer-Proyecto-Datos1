@@ -6,7 +6,9 @@ import sample.Juego.Cartas.Hechizos.*;
 import sample.Juego.Cartas.Secretos.*;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Inventario cartas.
+ *
  */
 public class InventarioCartas {
     /**

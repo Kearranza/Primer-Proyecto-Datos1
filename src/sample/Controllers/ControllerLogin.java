@@ -19,7 +19,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * @author Bryan Martínez y Kevin Carranza
  * The type Controller login.
+ *
  */
 public class ControllerLogin implements Initializable {
     @FXML
