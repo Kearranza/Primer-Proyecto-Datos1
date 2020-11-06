@@ -30,9 +30,10 @@ import java.util.ResourceBundle;
 public class ControllerTablero implements Initializable{
     private static boolean jugable;
     private static boolean congelado = false;
-    private static boolean sangre = false;
+
     private static int gratis = 0;
     private static int turnos = 1;
+    private static String acciones = "Historial"+"\n";
     @FXML
     private TextArea historial;
     @FXML
@@ -41,12 +42,12 @@ public class ControllerTablero implements Initializable{
     @FXML
     private Label LabelTurnos,VidaJugador,VidaAdversario,ManaJugador,ManaAdversario;
 
-    public static boolean isSangre() {
-        return sangre;
+    public static void setAcciones(String acciones) {
+        ControllerTablero.acciones = acciones;
     }
 
-    public static void setSangre(boolean sangre) {
-        ControllerTablero.sangre = sangre;
+    public static String getAcciones() {
+        return acciones;
     }
 
     public static int getGratis() {
@@ -73,7 +74,6 @@ public class ControllerTablero implements Initializable{
             Adversario.getInstance().cambioMana(25);
             setCongelado(false);
             setGratis(0);
-            setSangre(false);
         }
     }
     public void roboGUI(){
@@ -105,6 +105,7 @@ public class ControllerTablero implements Initializable{
         ManaJugador.setText(String.valueOf(Jugador.getInstance().getMana()));
         VidaAdversario.setText(String.valueOf(Adversario.getInstance().getPv()));
         ManaAdversario.setText(String.valueOf(Adversario.getInstance().getMana()));
+        historial.setText(acciones);
 
     }
     public void preview1() {
@@ -167,10 +168,16 @@ public class ControllerTablero implements Initializable{
         }
     }
     public void invocacion2() throws IOException {
-        if ((jugable) && (Carta2.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(1);
-            if(carta.getCoste()<=jugador.getMana()){
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(1);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(1);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -180,14 +187,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion3() throws IOException {
-        if ((jugable) && (Carta3.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(2);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(2);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(2);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -197,14 +212,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion4() throws IOException {
-        if ((jugable) && (Carta4.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(3);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(3);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(3);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -214,14 +237,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion5() throws IOException {
-        if ((jugable) && (Carta5.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(4);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(4);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(4);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -231,14 +262,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion6() throws IOException {
-        if ((jugable) && (Carta6.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(5);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(5);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(5);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -248,14 +287,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion7() throws IOException {
-        if ((jugable) && (Carta7.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(6);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(6);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(6);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -265,14 +312,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion8() throws IOException {
-        if ((jugable) && (Carta8.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(7);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(7);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(7);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -282,14 +337,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion9() throws IOException {
-        if ((jugable) && (Carta9.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(8);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(8);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(8);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -299,14 +362,22 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
     public void invocacion10() throws IOException {
-        if ((jugable) && (Carta10.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(9);
-            if(carta.getCoste()<=jugador.getMana()) {
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(9);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
                 jugador.invocar(9);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
@@ -316,6 +387,8 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }

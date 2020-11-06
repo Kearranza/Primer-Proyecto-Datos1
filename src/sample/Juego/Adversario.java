@@ -31,7 +31,7 @@ public class Adversario {
         }
     }
     public void cambioMana(int valor){
-        if ((this.mana += valor)>100){
+        if ((this.mana + valor)>100){
             Adversario.getInstance().setMana(100);
         }
         else{

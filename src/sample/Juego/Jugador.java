@@ -81,13 +81,9 @@ public class Jugador {
     }
     public void invocar(int i) throws IOException {
         Carta carta = this.getMano().buscar(i);
+        ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Jugador: "+carta.getNombre()+"\n");
         if (ControllerTablero.getGratis() == 0){
-            if (!ControllerTablero.isSangre()){
-                this.cambioMana(-(carta.getCoste()));
-            }
-            else{
-                this.cambioVida(-(carta.getCoste()));
-            }
+            this.cambioVida(-(carta.getCoste()));
         }
         if (ControllerTablero.getGratis() > 0){
             ControllerTablero.setGratis(ControllerTablero.getGratis()-1);
@@ -151,6 +147,14 @@ public class Jugador {
                     this.getMano().remove(carta);
                 }
                 else if (carta.getNombre().equals("Robar")){
+                    Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
+                    Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                    Thread tc = new Thread(c);
+                    tc.start();
+                    this.getMano().remove(carta);
+                }
+                else if (carta.getNombre().equals("FuenteMana")){
+                    ((FuenteMana) inventario.buscarImagen(carta.getImagen())).accion();
                     Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
                     Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
                     Thread tc = new Thread(c);

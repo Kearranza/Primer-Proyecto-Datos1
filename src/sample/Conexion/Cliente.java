@@ -21,11 +21,19 @@ public class Cliente implements Runnable{
     public static String ip;
 
     public Cliente(int puerto, String mensaje, Carta carta, String ip) throws IOException {
+        String[] components = mensaje.split("\\|");
         if (carta != null){
             ObjectMapper objectMapper = new ObjectMapper();
             String Cmapper = objectMapper.writeValueAsString(carta);
             this.mensaje = Cmapper;
         }else if(mensaje.equals("finalizar")){
+            this.mensaje = mensaje;
+        }
+        else if(components[0].equals("vida")){
+            this.mensaje = mensaje;
+
+        }
+        else if(components[0].equals("mana")){
             this.mensaje = mensaje;
         }
         else{
