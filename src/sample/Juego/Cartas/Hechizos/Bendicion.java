@@ -5,7 +5,7 @@ import sample.Juego.Jugador;
 
 public class Bendicion extends Carta {
     public Bendicion(int coste, String imagen) {
-        super(coste, imagen, "H", false);
+        super(coste, imagen, "H", true);
     }
 
     public void accion(){

@@ -177,6 +177,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -249,7 +262,7 @@
       <workItem from="1604338698477" duration="8231000" />
       <workItem from="1604444344049" duration="1944000" />
       <workItem from="1604537680331" duration="2520000" />
-      <workItem from="1604616811210" duration="1440000" />
+      <workItem from="1604616811210" duration="11082000" />
     </task>
     <servers />
   </component>
@@ -277,15 +290,23 @@
       <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state x="439" y="-744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1603744308879" />
-    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser" timestamp="1604618107554">
+    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser" timestamp="1604623527988">
       <screen x="305" y="-768" width="1360" height="738" />
     </state>
     <state x="1045" y="56" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604466403722" />
-    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1604618107554" />
+    <state x="1230" y="-718" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1604623527988" />
     <state x="397" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1603674426789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="397" y="101" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1603674426789" />
+    <state x="768" y="-505" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1604624545642">
+      <screen x="305" y="-768" width="1360" height="738" />
+    </state>
+    <state x="768" y="-505" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1604624545642" />
+    <state x="554" y="-768" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604630241812">
+      <screen x="305" y="-768" width="1360" height="738" />
+    </state>
+    <state x="554" y="-768" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.834/305.-768.1360.738@305.-768.1360.738" timestamp="1604630241812" />
     <state x="520" y="124" key="FileChooserDialogImpl" timestamp="1603246540830">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

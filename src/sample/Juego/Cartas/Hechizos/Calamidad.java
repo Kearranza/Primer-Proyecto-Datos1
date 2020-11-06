@@ -5,7 +5,7 @@ import sample.Juego.Jugador;
 
 public class Calamidad extends Carta {
     public Calamidad(int coste, String imagen) {
-        super(coste, imagen, "H", true);
+        super(coste, imagen, "H", false);
     }
 
     public void accion(){

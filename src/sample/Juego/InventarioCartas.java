@@ -1,14 +1,9 @@
 package sample.Juego;
 
-import javafx.scene.image.Image;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;
 import sample.Juego.Cartas.Secretos.*;
-
-import java.lang.reflect.Array;
 
 public class InventarioCartas {
     public static InventarioCartas instance = null;
@@ -53,10 +48,10 @@ public class InventarioCartas {
             Sirena.setNext(Wyvern);
             Esbirro WyvernAlfa = new Esbirro(50,"Esbirro/WyvernAlfa.png",15);
             Wyvern.setNext(WyvernAlfa);
-            ArmaOculta Arma = new ArmaOculta(30, "Hechizo/Arma.png");
-            WyvernAlfa.setNext(Arma);
+            FuenteMana FuenteMana = new FuenteMana(0, "Hechizo/FuenteMana.png");
+            WyvernAlfa.setNext(FuenteMana);
             Bendicion Bendicion = new Bendicion(20, "Hechizo/Bendicion.png");
-            Arma.setNext(Bendicion);
+            FuenteMana.setNext(Bendicion);
             Calamidad Calamidad = new Calamidad(20, "Hechizo/Calamidad.png");
             Bendicion.setNext(Calamidad);
             CeroAbsoluto CeroAbsoluto = new CeroAbsoluto(40,"Hechizo/Cero.png");
@@ -95,15 +90,15 @@ public class InventarioCartas {
             Compasion.setNext(Contrataque);
             Escudo Escudo = new Escudo(20,"Secreto/Escudo.png");
             Contrataque.setNext(Escudo);
-            FuenteMana FuenteMana = new FuenteMana(10,"Secreto/Fuente.png");
-            Escudo.setNext(FuenteMana);
+            BarreraMana BarreraMana = new BarreraMana(10,"Secreto/BarreraMana.png");
+            Escudo.setNext(BarreraMana);
             GranBarrera GranBarrera = new GranBarrera(40,"Secreto/GBarrera.png");
-            FuenteMana.setNext(GranBarrera);
+            BarreraMana.setNext(GranBarrera);
             Mimic Mimic = new Mimic(20,"Secreto/Mimic.png");
             GranBarrera.setNext(Mimic);
             Vacio Vacio = new Vacio(30,"Secreto/Vacio.png");
             Mimic.setNext(Vacio);
-            Carta Incognita = new Carta(0,"Secreto/Incognita.png", "");
+            Carta Incognita = new Carta(0,"Secreto/Incognita.png", "", false);
             Vacio.setNext(Incognita);
             this.size = 41;
         }

@@ -6,7 +6,7 @@ public class Esbirro extends Carta {
     private int ataque;
 
     public Esbirro(int coste, String imagen, int ataque) {
-        super(coste, imagen, "E", true);
+        super(coste, imagen, "E", false);
         this.ataque = ataque;
     }
 
