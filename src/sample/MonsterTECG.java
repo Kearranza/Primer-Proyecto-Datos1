@@ -14,6 +14,9 @@ import sample.Juego.Jugador;
 import sample.Juego.Mano;
 import sample.Juego.Mazo;
 
+/**
+ * The type Monster tecg.
+ */
 public class MonsterTECG extends Application {
 
     @Override
@@ -25,14 +28,14 @@ public class MonsterTECG extends Application {
         loginStage.setResizable(false);
         loginStage.setScene(scene);
         loginStage.show();
-
-        //ObjectMapper objectMapper = new ObjectMapper();
-        //Esbirro cali = new Esbirro(10,"Esbirro/Jorge.png",10);
-        //String mecagoenmaven = objectMapper.writeValueAsString(jugador.getMano().getFirst());
-        //System.out.println(mecagoenmaven);
     }
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

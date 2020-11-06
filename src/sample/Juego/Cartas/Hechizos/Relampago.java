@@ -6,7 +6,16 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * The type Relampago.
+ */
 public class Relampago extends Carta {
+    /**
+     * Instantiates a new Relampago.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Relampago(int coste, String imagen) {
         super(coste, imagen, "H", false);
     }

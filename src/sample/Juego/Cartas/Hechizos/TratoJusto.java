@@ -7,7 +7,16 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * The type Trato justo.
+ */
 public class TratoJusto extends Carta {
+    /**
+     * Instantiates a new Trato justo.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public TratoJusto(int coste, String imagen) {
         super(coste, imagen,"H", false);
     }

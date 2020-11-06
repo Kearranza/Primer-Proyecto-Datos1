@@ -6,18 +6,21 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * The type Codicia.
+ */
 public class Codicia extends Carta {
+    /**
+     * Instantiates a new Codicia.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Codicia(int coste, String imagen) {
-        super(coste, imagen, "H", false);
+        super(coste, imagen, "H", true);
     }
 
     public void accion() throws IOException {
-        Jugador jugador = Jugador.getInstance();
-        Carta carta = jugador.getMazo().eliminar();
-        Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), "R", carta.isFavor());
-        Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-        Thread tc = new Thread(c);
-        tc.start();
-        jugador.getMano().remove(carta);
+
     }
 }

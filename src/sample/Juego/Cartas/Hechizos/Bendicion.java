@@ -6,7 +6,16 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * The type Bendicion.
+ */
 public class Bendicion extends Carta {
+    /**
+     * Instantiates a new Bendicion.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Bendicion(int coste, String imagen) {
         super(coste, imagen, "H", true);
     }
