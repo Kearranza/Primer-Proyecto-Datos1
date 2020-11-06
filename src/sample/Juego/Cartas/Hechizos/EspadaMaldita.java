@@ -4,7 +4,7 @@ import sample.Juego.Cartas.Carta;
 
 public class EspadaMaldita extends Carta {
     public EspadaMaldita(int coste, String imagen) {
-        super(coste, imagen, "H", null);
+        super(coste, imagen, "H", true);
     }
     public void accion(){
 
