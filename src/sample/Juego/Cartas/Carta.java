@@ -3,6 +3,8 @@ package sample.Juego.Cartas;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.IOException;
+
 public class Carta {
     private Carta next = null;
     private Carta nextMano = null;
@@ -94,7 +96,7 @@ public class Carta {
         this.prevMano = prevMano;
     }
 
-    public void accion(){
+    public void accion() throws IOException {
 
     }
 

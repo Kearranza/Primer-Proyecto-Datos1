@@ -29,6 +29,9 @@ import java.util.ResourceBundle;
 
 public class ControllerTablero implements Initializable{
     private static boolean jugable;
+    private static boolean congelado = false;
+    private static boolean sangre = false;
+    private static int gratis = 0;
     private static int turnos = 1;
     @FXML
     private TextArea historial;
@@ -38,6 +41,25 @@ public class ControllerTablero implements Initializable{
     @FXML
     private Label LabelTurnos,VidaJugador,VidaAdversario,ManaJugador,ManaAdversario;
 
+    public static boolean isSangre() {
+        return sangre;
+    }
+
+    public static void setSangre(boolean sangre) {
+        ControllerTablero.sangre = sangre;
+    }
+
+    public static int getGratis() {
+        return gratis;
+    }
+
+    public static void setGratis(int gratis) {
+        ControllerTablero.gratis = gratis;
+    }
+
+    public static void setCongelado(boolean congelado) {
+        ControllerTablero.congelado = congelado;
+    }
 
     @FXML
     public void terminarTurno() throws IOException {
@@ -49,6 +71,9 @@ public class ControllerTablero implements Initializable{
             setJugable(!jugable);
             roboGUI();
             Adversario.getInstance().cambioMana(25);
+            setCongelado(false);
+            setGratis(0);
+            setSangre(false);
         }
     }
     public void roboGUI(){
@@ -117,16 +142,17 @@ public class ControllerTablero implements Initializable{
     }
     @FXML
     public void invocacion1() throws IOException {
-        if ((jugable) && (Carta1.getImage() != null)) {
-            Jugador jugador = Jugador.getInstance();
-            Carta carta = jugador.getMano().buscar(0);
-            if(carta.getCoste()<=jugador.getMana()){
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+        Jugador jugador = Jugador.getInstance();
+        Carta carta = jugador.getMano().buscar(0);
+        if(carta.getNombre().equals("Vapor")){
+            setCongelado(false);
+        }
+        if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
+            if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
+                if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                jugador.invocar(0);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -135,6 +161,8 @@ public class ControllerTablero implements Initializable{
                 }
                 OrdenCartas[jugador.getMano().getSize()].setImage(null);
                 CartaPreview.setImage(null);
+
+
             }
         }
     }
@@ -143,12 +171,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(1);
             if(carta.getCoste()<=jugador.getMana()){
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta (carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto,"", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(1);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -165,12 +188,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(2);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(2);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -187,12 +205,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(3);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(3);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -209,12 +222,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(4);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(4);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -231,12 +239,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(5);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(5);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -253,12 +256,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(6);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(6);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -275,12 +273,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(7);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(7);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -297,12 +290,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(8);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-carta.getCoste());
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(8);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -319,12 +307,7 @@ public class ControllerTablero implements Initializable{
             Jugador jugador = Jugador.getInstance();
             Carta carta = jugador.getMano().buscar(9);
             if(carta.getCoste()<=jugador.getMana()) {
-                jugador.cambioMana(-(carta.getCoste()));
-                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-                Thread tc = new Thread(c);
-                tc.start();
-                jugador.getMano().remove(carta);
+                jugador.invocar(9);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
