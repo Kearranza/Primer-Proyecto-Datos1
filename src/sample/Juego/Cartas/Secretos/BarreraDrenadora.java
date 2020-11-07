@@ -5,7 +5,7 @@ import sample.Juego.Cartas.Carta;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Barrera drenadora.
- *
+ *Esta es la clase BarrreraDrenadora que se encarga de almacenar los datos de una carta de este tipo(Clase hija de Carta).
  */
 public class BarreraDrenadora extends Carta {
     /**
@@ -17,14 +17,10 @@ public class BarreraDrenadora extends Carta {
     public BarreraDrenadora(int coste, String imagen) {
         super(coste, imagen, "S", false);
     }
+
+    @Override
     public void accion(){
 
     }
 
-    /**
-     * Condicion.
-     */
-    public void condicion(){
-
-    }
 }
