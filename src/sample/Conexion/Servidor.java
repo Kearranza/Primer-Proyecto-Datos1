@@ -65,14 +65,6 @@ public class Servidor extends Observable implements Runnable{
     }
 
     /**
-     * Is ocupado boolean.
-     * @return the boolean
-     */
-    public boolean isOcupado() {
-        return ocupado;
-    }
-
-    /**
      * Sets ocupado.
      * @param ocupado the ocupado
      */

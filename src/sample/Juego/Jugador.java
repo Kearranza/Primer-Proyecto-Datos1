@@ -3,10 +3,8 @@ package sample.Juego;
 import sample.Conexion.Cliente;
 import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
-import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;
 import sample.Juego.Cartas.Secretos.ArmasJorge;
-import sample.Juego.Cartas.Secretos.Contrataque;
 
 import java.io.IOException;
 
@@ -167,7 +165,7 @@ public class Jugador {
             carta.setCoste(0);
         }
         if (carta.getTipo().equals("E")){
-            if ((ControllerTablero.isSecretoP()) && (ControllerTablero.getsPropia().getNombre().equals("ArmasJorge")) ){ //&& (carta.getNombre().equals("Jorge"))
+            if ((ControllerTablero.isSecretoP()) && (ControllerTablero.getsPropia().getNombre().equals("ArmasJorge")&& (carta.getNombre().equals("Jorge"))) ){
                 InventarioCartas inventario = InventarioCartas.getInstance();
                 ((ArmasJorge) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion();
             }

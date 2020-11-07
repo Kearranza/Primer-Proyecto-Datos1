@@ -5,15 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import sample.Juego.Cartas.Esbirro;
-import sample.Juego.Cartas.Hechizos.Calamidad;
-import sample.Juego.InventarioCartas;
-import sample.Juego.Jugador;
-import sample.Juego.Mano;
-import sample.Juego.Mazo;
-
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Monster tecg.
