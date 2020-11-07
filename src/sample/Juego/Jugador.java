@@ -5,6 +5,8 @@ import sample.Controllers.ControllerTablero;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;
+import sample.Juego.Cartas.Secretos.ArmasJorge;
+import sample.Juego.Cartas.Secretos.Contrataque;
 
 import java.io.IOException;
 
@@ -145,25 +147,40 @@ public class Jugador {
      * @param i the
      * @throws IOException the io exception
      */
-    public void invocar(int i) throws IOException {
-        Carta carta = this.getMano().buscar(i);
-        ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Jugador: "+carta.getNombre()+"\n");
+    public void invocar(int i, Carta mimic) throws IOException {
+        Carta carta = null;
+        if (mimic == null){
+            carta = this.getMano().buscar(i);
+        }
+        if (mimic != null){
+            carta = mimic;
+            carta.setCoste(0);
+        }
         int coste = carta.getCoste();
-        if (ControllerTablero.getGratis() == 0){
+        if ((ControllerTablero.getGratis() == 0) && (!carta.getTipo().equals("S"))){
             this.cambioMana(-(carta.getCoste()));
+            Accion accion = new Accion ("Jugador: "+carta.getNombre()+"\n");
+            ControllerTablero.getRegistro().add(accion);
         }
         if (ControllerTablero.getGratis() > 0){
             ControllerTablero.setGratis(ControllerTablero.getGratis()-1);
             carta.setCoste(0);
         }
         if (carta.getTipo().equals("E")){
-            Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
-            Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
-            Thread tc = new Thread(c);
-            tc.start();
-            this.getMano().remove(carta);
+            if ((ControllerTablero.isSecretoP()) && (ControllerTablero.getsPropia().getNombre().equals("ArmasJorge")) ){ //&& (carta.getNombre().equals("Jorge"))
+                InventarioCartas inventario = InventarioCartas.getInstance();
+                ((ArmasJorge) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion();
+            }
+            else{
+                Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
+                Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
+                this.getMano().remove(carta);
+            }
+
         }
-        else if (carta.getTipo().equals("H")){
+        if (carta.getTipo().equals("H")){
             if (carta.isFavor()){
                 InventarioCartas inventario = InventarioCartas.getInstance();
                 if (carta.getNombre().equals("Bendicion")){
@@ -245,6 +262,25 @@ public class Jugador {
                 tc.start();
                 this.getMano().remove(carta);
             }
+        }
+        else if (carta.getTipo().equals("S") && (!ControllerTablero.isSecretoP())){
+            if (ControllerTablero.getGratis() > 0) {
+                ControllerTablero.setGratis(ControllerTablero.getGratis() - 1);
+                carta.setCoste(0);
+            }
+            else{
+                this.cambioMana(-(carta.getCoste()));
+            }
+            Accion accion = new Accion ("Jugador: "+carta.getNombre()+"\n");
+            ControllerTablero.getRegistro().add(accion);
+
+            ControllerTablero.setsPropia(carta);
+            ControllerTablero.setSecretoP(true);
+            Carta cartaEnviar = new Carta(carta.getCoste(), carta.getImagen(), carta.getTipo(), carta.isFavor());
+            Cliente c = new Cliente(Cliente.puerto, "", cartaEnviar, Cliente.ip);
+            Thread tc = new Thread(c);
+            tc.start();
+            this.getMano().remove(carta);
         }
         carta.setCoste(coste);
     }

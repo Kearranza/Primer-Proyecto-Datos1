@@ -60,7 +60,7 @@ public class Mano {
         Carta currentf = this.first;
         while (this.size<20){
             boolean flag = true;
-            valorAleatorio = (int)Math.floor(Math.random()*40);
+            valorAleatorio = (int)Math.floor(Math.random()*39);
             carta = inventario.buscar(valorAleatorio);
             for (int j = 0; j < this.size;j++){
                  if (currentf == carta){
@@ -138,17 +138,20 @@ public class Mano {
             carta.setPrevMano(null);
             this.first = null;
             this.last = null;
+            this.size -=1;
         }
         else if(this.first == carta){
             this.first = this.first.getNextMano();
             this.first.setPrevMano(this.last);
             this.last.setNextMano(this.first);
+            this.size -=1;
 
         }
         else if(this.last == carta){
             this.last = this.last.getPrevMano();
             this.first.setPrevMano(this.last);
             this.last.setNextMano(this.first);
+            this.size -=1;
         }
         else{
             Carta current = this.first;
@@ -158,12 +161,13 @@ public class Mano {
                     current.getNextMano().setPrevMano(current.getPrevMano());
                     current.setNextMano(null);
                     current.setPrevMano(null);
+                    this.size -=1;
                     break;
                 }
                 current = current.getNextMano();
-            }
+        }
 
         }
-        this.size -=1;
+
     }
 }

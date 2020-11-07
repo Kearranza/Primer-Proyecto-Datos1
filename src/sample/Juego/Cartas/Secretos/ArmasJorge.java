@@ -1,5 +1,7 @@
 package sample.Juego.Cartas.Secretos;
 
+import sample.Conexion.Cliente;
+import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
 
 import java.io.IOException;
@@ -20,9 +22,11 @@ public class ArmasJorge extends Carta {
         super(coste, imagen,"S", false);
     }
 
-    @Override
-    public void accion(){
-
+    public void accion() throws IOException {
+        Adversario.getInstance().setPv(-999);
+        Cliente cv = new Cliente(Cliente.puerto, "Jorge"+"|"+ "-999", null, Cliente.ip);
+        Thread tcv = new Thread(cv);
+        tcv.start();
     }
 
 }

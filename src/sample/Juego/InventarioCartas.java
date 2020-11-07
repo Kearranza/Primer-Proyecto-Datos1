@@ -110,9 +110,7 @@ public class InventarioCartas {
             GranBarrera.setNext(Mimic);
             Vacio Vacio = new Vacio(30,"Secreto/Vacio.png");
             Mimic.setNext(Vacio);
-            Carta Incognita = new Carta(0,"Secreto/Incognita.png", "", false);
-            Vacio.setNext(Incognita);
-            this.size = 41;
+            this.size = 40;
         }
     }
 

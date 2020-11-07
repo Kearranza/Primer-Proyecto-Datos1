@@ -2,10 +2,12 @@ package sample.Conexion;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import sample.Controllers.ControllerTablero;
+import sample.Juego.Accion;
 import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;
+import sample.Juego.Cartas.Secretos.*;
 import sample.Juego.InventarioCartas;
 import sample.Juego.Jugador;
 
@@ -48,6 +50,10 @@ public class Servidor extends Observable implements Runnable{
         }catch(IOException ex){
             this.conectado = false;
         }
+    }
+
+    public static void setActivada(boolean activada) {
+        Servidor.activada = activada;
     }
 
     /**
@@ -98,15 +104,59 @@ public class Servidor extends Observable implements Runnable{
                     int vida= Integer.parseInt(components[1]);
                     Adversario.getInstance().cambioVida(vida);
                 }
+                else if(components[0].equals("Jorge")){
+                    int vida= Integer.parseInt(components[1]);
+                    Jugador.getInstance().setPv(vida);
+                }
                 else if(components[0].equals("mana")){
                     int mana = Integer.parseInt(components[1]);
                     Adversario.getInstance().cambioMana(mana);
                 }
+                else if(components[0].equals("activacion")){
+                    Accion accion = new Accion ("Se activó: "+components[1]+"\n");
+                    ControllerTablero.getRegistro().add(accion);
+                    ControllerTablero.setsRival(null);
+                    ControllerTablero.setSecretoR(false);
+                }
                 else if(this.ocupado){
                     Carta carta =  new ObjectMapper().readValue(mensaje, Carta.class);
                     InventarioCartas inventario = InventarioCartas.getInstance();
-                    ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
                     Adversario.getInstance().cambioMana(-carta.getCoste());
+                    if (!carta.getTipo().equals("S")){
+                        Accion accion = new Accion ("Adversario: "+carta.getNombre()+"\n");
+                        ControllerTablero.getRegistro().add(accion);
+                    }
+                    if (ControllerTablero.isSecretoP()){
+                        if (ControllerTablero.getsPropia().getNombre().equals("Apaciguar")){
+                            ((Apaciguar) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("Contrataque")){
+                            ((Contrataque) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("BarreraD")){
+                            ((BarreraDrenadora) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("BarreraMana")){
+                            ((BarreraMana) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("Compasion")){
+                            ((Compasion) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+
+                        else if (ControllerTablero.getsPropia().getNombre().equals("Escudo")){
+                            ((Escudo) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("GBarrera")){
+                            ((GranBarrera) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("Mimic")){
+                            ((Mimic) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                        else if (ControllerTablero.getsPropia().getNombre().equals("Vacio")){
+                            ((Vacio) inventario.buscarImagen(ControllerTablero.getsPropia().getImagen())).accion(carta);
+                        }
+                    }
+
                     if ((carta.getTipo().equals("E")) && (!activada)){
                         ((Esbirro) inventario.buscarImagen(carta.getImagen())).accion();
                     }
@@ -131,9 +181,15 @@ public class Servidor extends Observable implements Runnable{
                         }
                     }
                     if ((carta.getTipo().equals("S")) && (!activada)){
-                        System.out.println("S");
+                        Carta cartaI = new Carta(0,"Secreto/Incognita.png", "", false);
+                        ControllerTablero.setsRival(cartaI);
+                        ControllerTablero.setSecretoR(true);
+                        Accion accion = new Accion ("Adversario: ???"+"\n");
+                        ControllerTablero.getRegistro().add(accion);
+
                     }
                 }
+                activada = false;
                 sc.close();
 
             }

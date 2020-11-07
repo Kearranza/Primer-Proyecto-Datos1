@@ -35,6 +35,10 @@ public class Mazo {
             }
         }
 
+    public int getTop() {
+        return top;
+    }
+
     /**
      * Eliminar carta.
      * Se encarga de retornar la carta del tope.

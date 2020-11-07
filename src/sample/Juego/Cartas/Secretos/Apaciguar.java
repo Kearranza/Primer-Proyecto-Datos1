@@ -1,6 +1,10 @@
 package sample.Juego.Cartas.Secretos;
 
+import sample.Conexion.Cliente;
+import sample.Controllers.ControllerTablero;
+import sample.Juego.Accion;
 import sample.Juego.Cartas.Carta;
+import sample.Juego.Jugador;
 
 import java.io.IOException;
 
@@ -20,8 +24,17 @@ public class Apaciguar extends Carta {
         super(coste, imagen, "S", false);
     }
 
-    @Override
-    public void accion(){
+    public void accion(Carta carta) throws IOException {
+        if ((carta.getTipo().equals("E")) || (carta.getNombre().equals("Relampago")) || (carta.getNombre().equals("Calamidad"))){
+            Jugador.getInstance().robar();
+            Accion accion = new Accion ("Se activó: "+ControllerTablero.getsPropia().getNombre()+"\n");
+            ControllerTablero.getRegistro().add(accion);
+            Cliente c = new Cliente(Cliente.puerto, "activacion"+"|"+ControllerTablero.getsPropia().getNombre(), null, Cliente.ip);
+            Thread tc = new Thread(c);
+            tc.start();
+            ControllerTablero.setsPropia(null);
+            ControllerTablero.setSecretoP(false);
+        }
 
     }
 }

@@ -19,6 +19,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import sample.Conexion.Cliente;
 import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
+import sample.Juego.Historial;
 import sample.Juego.InventarioCartas;
 import sample.Juego.Jugador;
 
@@ -38,39 +39,62 @@ public class ControllerTablero implements Initializable {
     private static boolean congelado = false;
     private static boolean secretoP = false;
     private static boolean secretoR = false;
+    private static boolean agotamiento =false;
     private static Carta sRival;
     private static Carta sPropia;
     private static int gratis = 0;
     private static int turnos = 1;
-    private static String acciones = "Historial" + "\n";
+    private static Historial registro = new Historial();
     @FXML
     private TextArea historial;
     @FXML
     private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
     private ImageView[] OrdenCartas = new ImageView[10];
+    @FXML
     private ImageView SecretoRival;
+    @FXML
     private ImageView SecretoPropia;
+    @FXML
     private ImageView PantallaFinal;
 
+    public static Historial getRegistro() {
+        return registro;
+    }
 
+    public static boolean isSecretoR() {
+        return secretoR;
+    }
+
+    public static void setSecretoR(boolean secretoR) {
+        ControllerTablero.secretoR = secretoR;
+    }
+
+    public static Carta getsRival() {
+        return sRival;
+    }
+
+    public static void setsRival(Carta sRival) {
+        ControllerTablero.sRival = sRival;
+    }
+
+    public static Carta getsPropia() {
+        return sPropia;
+    }
+
+    public static void setsPropia(Carta sPropia) {
+        ControllerTablero.sPropia = sPropia;
+    }
+
+    public static boolean isSecretoP() {
+        return secretoP;
+    }
+
+    public static void setSecretoP(boolean secretoP) {
+        ControllerTablero.secretoP = secretoP;
+    }
     @FXML
     private Label LabelTurnos, VidaJugador, VidaAdversario, ManaJugador, ManaAdversario;
 
-    /**
-     * Sets acciones.
-     * @param acciones the acciones
-     */
-    public static void setAcciones(String acciones) {
-        ControllerTablero.acciones = acciones;
-    }
-
-    /**
-     * Gets acciones.
-     * @return the acciones
-     */
-    public static String getAcciones() {
-        return acciones;
-    }
 
     /**
      * Gets gratis.
@@ -129,18 +153,25 @@ public class ControllerTablero implements Initializable {
     public void roboGUI(){
         Jugador jugador = Jugador.getInstance();
         if (jugador.getMano().getSize() < 10) {
-            Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
-            t.play();
-            t.setOnFinished(event -> {
-                jugador.robar();
-                Carta current = jugador.getMano().getFirst();
-                for (int i = 0; i < jugador.getMano().getSize(); i++) {
-                    Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
-                    OrdenCartas[i].setImage(image);
-                    current = current.getNextMano();
-                }
-            });
-            MazoMentira.setLayoutX(1091);
+            if (jugador.getInstance().getMazo().getTop() == -1){
+
+            }
+            else{
+                Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
+                t.play();
+                t.setOnFinished(event -> {
+                    jugador.robar();
+                    Carta current = jugador.getMano().getFirst();
+                    for (int i = 0; i < jugador.getMano().getSize(); i++) {
+                        Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
+                        OrdenCartas[i].setImage(image);
+                        current = current.getNextMano();
+                    }
+                });
+                MazoMentira.setLayoutX(1091);
+            }
+
+
         }
     }
 
@@ -166,7 +197,38 @@ public class ControllerTablero implements Initializable {
         ManaJugador.setText(String.valueOf(Jugador.getInstance().getMana()));
         VidaAdversario.setText(String.valueOf(Adversario.getInstance().getPv()));
         ManaAdversario.setText(String.valueOf(Adversario.getInstance().getMana()));
-        historial.setText(acciones);
+        historial.setText(registro.mostrar());
+        if (secretoP){
+            Image imageP = new Image(getClass().getResourceAsStream(sPropia.getImagen()));
+            SecretoPropia.setImage(imageP);
+        }
+        if (secretoR){
+            Image imageR = new Image(getClass().getResourceAsStream(sRival.getImagen()));
+            SecretoRival.setImage(imageR);
+        }
+        if (sRival == null){
+            SecretoRival.setImage(null);
+        }
+        if (sPropia == null){
+            SecretoPropia.setImage(null);
+        }
+        if (Jugador.getInstance().getPv() >= 0){
+
+        }
+        if (Adversario.getInstance().getPv() >= 0){
+
+        }
+        if (Adversario.getInstance().getPv() == -999){
+
+        }
+        if (Jugador.getInstance().getPv() == -999){
+
+        }
+        if (agotamiento){
+
+        }
+
+
 
     }
 
@@ -279,7 +341,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(0);
+                jugador.invocar(0, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -314,7 +376,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(1);
+                jugador.invocar(1, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -349,7 +411,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(2);
+                jugador.invocar(2, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -384,7 +446,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(3);
+                jugador.invocar(3, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -419,7 +481,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(4);
+                jugador.invocar(4, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -454,7 +516,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(5);
+                jugador.invocar(5, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -489,7 +551,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(6);
+                jugador.invocar(6, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -524,7 +586,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(7);
+                jugador.invocar(7, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -559,7 +621,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(8);
+                jugador.invocar(8, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
@@ -594,7 +656,7 @@ public class ControllerTablero implements Initializable {
                     roboGUI();
                     roboGUI();
                 }
-                jugador.invocar(9);
+                jugador.invocar(9, null);
                 Carta current = jugador.getMano().getFirst();
                 for (int i = 0; i < jugador.getMano().getSize(); i++) {
                     Image image = new Image(getClass().getResourceAsStream(current.getImagen()));
