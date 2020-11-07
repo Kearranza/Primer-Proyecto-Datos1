@@ -100,6 +100,9 @@ public class Servidor extends Observable implements Runnable{
                     ControllerTablero.aumentoTurno();
                     Jugador.getInstance().cambioMana(25);
                 }
+                else if (components[0].equals("agotar")){
+                    ControllerTablero.setAgotamiento(2);
+                }
                 else if(components[0].equals("vida")){
                     int vida= Integer.parseInt(components[1]);
                     Adversario.getInstance().cambioVida(vida);

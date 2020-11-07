@@ -64,6 +64,9 @@ public class Cliente implements Runnable{
         else if(components[0].equals("Jorge")){
             this.mensaje = mensaje;
         }
+        else if(components[0].equals("agotar")){
+            this.mensaje = mensaje;
+        }
         else{
             try {
                 this.puerto = puerto;

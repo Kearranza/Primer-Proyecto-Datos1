@@ -3,29 +3,28 @@ package sample.Controllers;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import sample.Conexion.Cliente;
 import sample.Juego.Adversario;
 import sample.Juego.Cartas.Carta;
 import sample.Juego.Historial;
-import sample.Juego.InventarioCartas;
+
 import sample.Juego.Jugador;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.cert.TrustAnchor;
+
 import java.util.ResourceBundle;
 
 
@@ -39,7 +38,7 @@ public class ControllerTablero implements Initializable {
     private static boolean congelado = false;
     private static boolean secretoP = false;
     private static boolean secretoR = false;
-    private static boolean agotamiento =false;
+    private static int agotamiento = 0;
     private static Carta sRival;
     private static Carta sPropia;
     private static int gratis = 0;
@@ -57,21 +56,20 @@ public class ControllerTablero implements Initializable {
     @FXML
     private ImageView PantallaFinal;
 
+    public static void setAgotamiento(int agotamiento) {
+        ControllerTablero.agotamiento = agotamiento;
+    }
+
     public static Historial getRegistro() {
         return registro;
     }
 
-    public static boolean isSecretoR() {
-        return secretoR;
-    }
 
     public static void setSecretoR(boolean secretoR) {
         ControllerTablero.secretoR = secretoR;
     }
 
-    public static Carta getsRival() {
-        return sRival;
-    }
+
 
     public static void setsRival(Carta sRival) {
         ControllerTablero.sRival = sRival;
@@ -124,6 +122,7 @@ public class ControllerTablero implements Initializable {
      * Finalizar juego.
      */
     public void finalizarJuego(){
+        System.exit(0);
     }
 
     /**
@@ -150,11 +149,14 @@ public class ControllerTablero implements Initializable {
      * Robo gui.
      * Se encarga de la animación y acción de robar una carta.
      */
-    public void roboGUI(){
+    public void roboGUI() throws IOException {
         Jugador jugador = Jugador.getInstance();
         if (jugador.getMano().getSize() < 10) {
-            if (jugador.getInstance().getMazo().getTop() == -1){
-
+            if (jugador.getMazo().getTop() == -1){
+                agotamiento = 1;
+                Cliente c = new Cliente(Cliente.puerto, "agotar"+"|"+ "2", null, Cliente.ip);
+                Thread tc = new Thread(c);
+                tc.start();
             }
             else{
                 Timeline t = new Timeline(new KeyFrame(Duration.seconds(0), new KeyValue(MazoMentira.translateXProperty(), 0)), new KeyFrame(Duration.seconds(1), new KeyValue(MazoMentira.translateXProperty(), 190)));
@@ -212,21 +214,37 @@ public class ControllerTablero implements Initializable {
         if (sPropia == null){
             SecretoPropia.setImage(null);
         }
-        if (Jugador.getInstance().getPv() >= 0){
-
+        if (Jugador.getInstance().getPv() == 0){
+            PantallaFinal.setDisable(false);
+            Image derrota = new Image(getClass().getResourceAsStream("Finales/Derrota.png"));
+            PantallaFinal.setImage(derrota);
         }
-        if (Adversario.getInstance().getPv() >= 0){
-
+        if (Adversario.getInstance().getPv() == 0){
+            PantallaFinal.setDisable(false);
+            Image gane = new Image(getClass().getResourceAsStream("Finales/Victoria.jpg"));
+            PantallaFinal.setImage(gane);
         }
         if (Adversario.getInstance().getPv() == -999){
-
+            PantallaFinal.setDisable(false);
+            Image gane = new Image(getClass().getResourceAsStream("Finales/JorgeVictoria.jpg"));
+            PantallaFinal.setImage(gane);
         }
         if (Jugador.getInstance().getPv() == -999){
-
+            PantallaFinal.setDisable(false);
+            Image derrota = new Image(getClass().getResourceAsStream("Finales/JorgeDerrota.jpg"));
+            PantallaFinal.setImage(derrota);
         }
-        if (agotamiento){
-
+        if (agotamiento == 1){
+            PantallaFinal.setDisable(false);
+            Image derrota = new Image(getClass().getResourceAsStream("Finales/DerrotaDeck.png"));
+            PantallaFinal.setImage(derrota);
         }
+        if (agotamiento == 2){
+            PantallaFinal.setDisable(false);
+            Image gane = new Image(getClass().getResourceAsStream("Finales/VictoriaDeck.jpg"));
+            PantallaFinal.setImage(gane);
+        }
+
 
 
 
