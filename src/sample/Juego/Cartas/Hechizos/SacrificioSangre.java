@@ -7,7 +7,18 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Sacrificio sangre.
+ *
+ */
 public class SacrificioSangre extends Carta {
+    /**
+     * Instantiates a new Sacrificio sangre.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public SacrificioSangre(int coste, String imagen) {
         super(coste, imagen,"H", true);
     }

@@ -18,6 +18,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Controller login.
+ *
+ */
 public class ControllerLogin implements Initializable {
     @FXML
     private TextField ipE;
@@ -25,6 +30,13 @@ public class ControllerLogin implements Initializable {
     private TextField portP;
     @FXML
     private TextField portE;
+
+    /**
+     * Click host.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void clickHost(ActionEvent event) throws IOException {
         String portPer = portP.getText();
@@ -72,6 +84,13 @@ public class ControllerLogin implements Initializable {
         }
 
     }
+
+    /**
+     * Click unirse.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void clickUnirse(ActionEvent event) throws IOException {
         String portPer = portP.getText();

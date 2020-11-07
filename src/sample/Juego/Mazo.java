@@ -2,11 +2,21 @@ package sample.Juego;
 
 import sample.Juego.Cartas.Carta;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Mazo.
+ *
+ */
 public class Mazo {
     private int top = -1;
     private int maxsize = 16;
     private Carta[] stackArray;
 
+    /**
+     * Instantiates a new Mazo.
+     *
+     * @param mano the mano
+     */
     public Mazo(Mano mano) {
         this.stackArray = new Carta[16];
         this.inicial(mano);
@@ -23,6 +33,11 @@ public class Mazo {
             }
         }
 
+    /**
+     * Eliminar carta.
+     *
+     * @return the carta
+     */
     public Carta eliminar(){
         return this.stackArray[top--];
     }

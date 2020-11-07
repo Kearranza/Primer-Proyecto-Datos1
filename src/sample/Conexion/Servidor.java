@@ -17,13 +17,29 @@ import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Servidor.
+ *
+ */
 public class Servidor extends Observable implements Runnable{
 
     private boolean ocupado;
+    /**
+     * The Puerto.
+     */
     public int puerto;
     private boolean conectado;
+    /**
+     * The Servidor.
+     */
     public ServerSocket servidor = null;
 
+    /**
+     * Instantiates a new Servidor.
+     *
+     * @param puerto the puerto
+     */
     public Servidor(int puerto){
         try{
             this.servidor = new ServerSocket(puerto);
@@ -34,14 +50,29 @@ public class Servidor extends Observable implements Runnable{
         }
     }
 
+    /**
+     * Is conectado boolean.
+     *
+     * @return the boolean
+     */
     public boolean isConectado() {
         return conectado;
     }
 
+    /**
+     * Is ocupado boolean.
+     *
+     * @return the boolean
+     */
     public boolean isOcupado() {
         return ocupado;
     }
 
+    /**
+     * Sets ocupado.
+     *
+     * @param ocupado the ocupado
+     */
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }
@@ -72,7 +103,7 @@ public class Servidor extends Observable implements Runnable{
                 }
                 else if(components[0].equals("mana")){
                     int mana = Integer.parseInt(components[1]);
-                    Adversario.getInstance().cambioVida(mana);
+                    Adversario.getInstance().cambioMana(mana);
                 }
                 else if(this.ocupado){
 
@@ -96,11 +127,6 @@ public class Servidor extends Observable implements Runnable{
                             }
                             else if (carta.getNombre().equals("Cero")){
                                 ((CeroAbsoluto) inventario.buscarImagen(carta.getImagen())).accion();
-                                ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
-                                Adversario.getInstance().cambioMana(-carta.getCoste());
-                            }
-                            else if (carta.getNombre().equals("Codicia")){
-                                ((Codicia) inventario.buscarImagen(carta.getImagen())).accion();
                                 ControllerTablero.setAcciones(ControllerTablero.getAcciones()+"Adversario: "+carta.getNombre()+"\n");
                                 Adversario.getInstance().cambioMana(-carta.getCoste());
                             }
@@ -128,10 +154,6 @@ public class Servidor extends Observable implements Runnable{
                     }
                     else if (carta.getTipo().equals("S")){
                         System.out.println("S");
-                    }
-                    else if(carta.getTipo().equals("R")){
-                        Jugador jugador = Jugador.getInstance();
-                        jugador.getMano().add(carta);
                     }
                 }
                 sc.close();

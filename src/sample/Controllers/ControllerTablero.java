@@ -27,41 +27,91 @@ import java.net.URL;
 import java.security.cert.TrustAnchor;
 import java.util.ResourceBundle;
 
-public class ControllerTablero implements Initializable{
+
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Controller tablero.
+ *
+ */
+public class ControllerTablero implements Initializable {
     private static boolean jugable;
     private static boolean congelado = false;
-
+    private static boolean secretoP = false;
+    private static boolean secretoR = false;
+    private static Carta sRival;
+    private static Carta sPropia;
     private static int gratis = 0;
     private static int turnos = 1;
-    private static String acciones = "Historial"+"\n";
+    private static String acciones = "Historial" + "\n";
     @FXML
     private TextArea historial;
     @FXML
-    private ImageView Carta1,Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
+    private ImageView Carta1, Carta2, Carta3, Carta4, Carta5, Carta6, Carta7, Carta8, Carta9, Carta10, CartaPreview, MazoMentira;
     private ImageView[] OrdenCartas = new ImageView[10];
-    @FXML
-    private Label LabelTurnos,VidaJugador,VidaAdversario,ManaJugador,ManaAdversario;
+    private ImageView SecretoRival;
+    private ImageView SecretoPropia;
+    private ImageView PantallaFinal;
 
+
+    @FXML
+    private Label LabelTurnos, VidaJugador, VidaAdversario, ManaJugador, ManaAdversario;
+
+    /**
+     * Sets acciones.
+     *
+     * @param acciones the acciones
+     */
     public static void setAcciones(String acciones) {
         ControllerTablero.acciones = acciones;
     }
 
+    /**
+     * Gets acciones.
+     *
+     * @return the acciones
+     */
     public static String getAcciones() {
         return acciones;
     }
 
+    /**
+     * Gets gratis.
+     *
+     * @return the gratis
+     */
     public static int getGratis() {
         return gratis;
     }
 
+    /**
+     * Sets gratis.
+     *
+     * @param gratis the gratis
+     */
     public static void setGratis(int gratis) {
         ControllerTablero.gratis = gratis;
     }
 
+    /**
+     * Sets congelado.
+     *
+     * @param congelado the congelado
+     */
     public static void setCongelado(boolean congelado) {
         ControllerTablero.congelado = congelado;
     }
 
+    /**
+     * Finalizar juego.
+     */
+    public void finalizarJuego(){
+    }
+
+    /**
+     * Terminar turno.
+     *
+     * @throws IOException the io exception
+     */
     @FXML
     public void terminarTurno() throws IOException {
         if (jugable){
@@ -76,6 +126,10 @@ public class ControllerTablero implements Initializable{
             setGratis(0);
         }
     }
+
+    /**
+     * Robo gui.
+     */
     public void roboGUI(){
         Jugador jugador = Jugador.getInstance();
         if (jugador.getMano().getSize() < 10) {
@@ -94,10 +148,21 @@ public class ControllerTablero implements Initializable{
         }
     }
 
+    /**
+     * Sets jugable.
+     *
+     * @param cambio the cambio
+     */
     public static void setJugable(boolean cambio) { jugable = cambio; }
 
+    /**
+     * Aumento turno.
+     */
     public static void aumentoTurno() { ControllerTablero.turnos++; }
 
+    /**
+     * Update.
+     */
     @FXML
     public void update(){
         LabelTurnos.setText(String.valueOf(turnos));
@@ -108,39 +173,89 @@ public class ControllerTablero implements Initializable{
         historial.setText(acciones);
 
     }
+
+    /**
+     * Preview 1.
+     */
     public void preview1() {
         if (jugable){ CartaPreview.setImage(Carta1.getImage()); }
     }
+
+    /**
+     * Preview 2.
+     */
     public void preview2() {
         if (jugable){ CartaPreview.setImage(Carta2.getImage()); }
     }
+
+    /**
+     * Preview 3.
+     */
     public void preview3() {
         if (jugable){ CartaPreview.setImage(Carta3.getImage()); }
     }
+
+    /**
+     * Preview 4.
+     */
     public void preview4() {
         if (jugable){ CartaPreview.setImage(Carta4.getImage()); }
     }
+
+    /**
+     * Preview 5.
+     */
     public void preview5() {
         if (jugable){ CartaPreview.setImage(Carta5.getImage()); }
     }
+
+    /**
+     * Preview 6.
+     */
     public void preview6() {
         if (jugable){ CartaPreview.setImage(Carta6.getImage()); }
     }
+
+    /**
+     * Preview 7.
+     */
     public void preview7() {
         if (jugable){ CartaPreview.setImage(Carta7.getImage()); }
     }
+
+    /**
+     * Preview 8.
+     */
     public void preview8() {
         if (jugable){ CartaPreview.setImage(Carta8.getImage()); }
     }
+
+    /**
+     * Preview 9.
+     */
     public void preview9() {
         if (jugable){ CartaPreview.setImage(Carta9.getImage()); }
     }
+
+    /**
+     * Preview 10.
+     */
     public void preview10() {
         if (jugable){ CartaPreview.setImage(Carta10.getImage()); }
     }
+
+    /**
+     * Exit.
+     */
     public void exit() {
         if (jugable){ CartaPreview.setImage(null); }
     }
+
+    /**
+     * Invocacion 1.
+     *
+     * @throws IOException the io exception
+     */
     @FXML
     public void invocacion1() throws IOException {
         Jugador jugador = Jugador.getInstance();
@@ -151,6 +266,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(0);
@@ -167,6 +286,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 2.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion2() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(1);
@@ -176,6 +301,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(1);
@@ -192,6 +321,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 3.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion3() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(2);
@@ -201,6 +336,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(2);
@@ -217,6 +356,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 4.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion4() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(3);
@@ -226,6 +371,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(3);
@@ -242,6 +391,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 5.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion5() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(4);
@@ -251,6 +406,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(4);
@@ -267,6 +426,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 6.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion6() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(5);
@@ -276,6 +441,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(5);
@@ -292,6 +461,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 7.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion7() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(6);
@@ -301,6 +476,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(6);
@@ -317,6 +496,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 8.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion8() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(7);
@@ -326,6 +511,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(7);
@@ -342,6 +531,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 9.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion9() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(8);
@@ -351,6 +546,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(8);
@@ -367,6 +566,12 @@ public class ControllerTablero implements Initializable{
             }
         }
     }
+
+    /**
+     * Invocacion 10.
+     *
+     * @throws IOException the io exception
+     */
     public void invocacion10() throws IOException {
         Jugador jugador = Jugador.getInstance();
         Carta carta = jugador.getMano().buscar(9);
@@ -376,6 +581,10 @@ public class ControllerTablero implements Initializable{
         if ((jugable) && (Carta1.getImage() != null) && (!congelado)) {
             if((carta.getCoste()<=jugador.getMana()) || (gratis > 0)){
                 if(carta.getNombre().equals("Robar")){
+                    roboGUI();
+                }
+                else if(carta.getNombre().equals("Codicia")){
+                    roboGUI();
                     roboGUI();
                 }
                 jugador.invocar(9);

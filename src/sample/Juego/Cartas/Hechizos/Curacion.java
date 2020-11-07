@@ -6,7 +6,18 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Curacion.
+ *
+ */
 public class Curacion extends Carta {
+    /**
+     * Instantiates a new Curacion.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Curacion(int coste, String imagen) {
         super(coste, imagen, "H", true);
     }

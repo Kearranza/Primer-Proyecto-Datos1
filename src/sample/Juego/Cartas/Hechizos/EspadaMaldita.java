@@ -6,15 +6,27 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Espada maldita.
+ *
+ */
 public class EspadaMaldita extends Carta {
+    /**
+     * Instantiates a new Espada maldita.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public EspadaMaldita(int coste, String imagen) {
         super(coste, imagen, "H", false);
     }
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
-        jugador.setPv(jugador.getPv()/2);
         Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+ String.valueOf(-(jugador.getPv()/2)), null, Cliente.ip);
         Thread tc = new Thread(c);
         tc.start();
+        jugador.setPv(jugador.getPv()/2);
+
     }
 }

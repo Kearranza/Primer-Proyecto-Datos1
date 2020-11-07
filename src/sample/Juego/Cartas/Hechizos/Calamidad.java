@@ -6,7 +6,17 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Calamidad.
+ */
 public class Calamidad extends Carta {
+    /**
+     * Instantiates a new Calamidad.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Calamidad(int coste, String imagen) {
         super(coste, imagen, "H", false);
     }

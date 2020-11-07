@@ -5,11 +5,24 @@ import sample.Juego.Cartas.Esbirro;
 import sample.Juego.Cartas.Hechizos.*;
 import sample.Juego.Cartas.Secretos.*;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Inventario cartas.
+ *
+ */
 public class InventarioCartas {
+    /**
+     * The constant instance.
+     */
     public static InventarioCartas instance = null;
     private Carta head = null;
     private int size = 0;
 
+    /**
+     * Get instance inventario cartas.
+     *
+     * @return the inventario cartas
+     */
     public static InventarioCartas getInstance(){
         if (instance == null){
             instance = new InventarioCartas();
@@ -38,15 +51,15 @@ public class InventarioCartas {
             Golem.setNext(Katakans);
             Esbirro Lobo = new Esbirro(10,"Esbirro/Lobo.png",15);
             Katakans.setNext(Lobo);
-            Esbirro LordSapo = new Esbirro(50,"Esbirro/LordSapo.png",15);
+            Esbirro LordSapo = new Esbirro(50,"Esbirro/LordSapo.png",40);
             Lobo.setNext(LordSapo);
             Esbirro Sabueso = new Esbirro(10,"Esbirro/Sabueso.png",15);
             LordSapo.setNext(Sabueso);
             Esbirro Sirena = new Esbirro(20,"Esbirro/Sirena.png",25);
             Sabueso.setNext(Sirena);
-            Esbirro Wyvern = new Esbirro(40,"Esbirro/Wyvern.png",15);
+            Esbirro Wyvern = new Esbirro(40,"Esbirro/Wyvern.png",40);
             Sirena.setNext(Wyvern);
-            Esbirro WyvernAlfa = new Esbirro(50,"Esbirro/WyvernAlfa.png",15);
+            Esbirro WyvernAlfa = new Esbirro(50,"Esbirro/WyvernAlfa.png",45);
             Wyvern.setNext(WyvernAlfa);
             FuenteMana FuenteMana = new FuenteMana(0, "Hechizo/FuenteMana.png");
             WyvernAlfa.setNext(FuenteMana);
@@ -103,6 +116,13 @@ public class InventarioCartas {
             this.size = 41;
         }
     }
+
+    /**
+     * Buscar carta.
+     *
+     * @param valor the valor
+     * @return the carta
+     */
     public Carta buscar (int valor){
         Carta current = this.head;
         for(int i=0 ; i < this.size;i++){
@@ -113,11 +133,17 @@ public class InventarioCartas {
         }
         return current;
     }
+
+    /**
+     * Buscar imagen object.
+     *
+     * @param imagen the imagen
+     * @return the object
+     */
     public Object buscarImagen(String imagen){
         Object current = this.head;
         for(int i=0 ; i < this.size;i++){
             if (imagen.equals(((Carta) current).getImagen())){
-                System.out.println("Hola, funco");
                 break;
             }
             current = ((Carta) current).getNext();

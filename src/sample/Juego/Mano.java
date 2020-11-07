@@ -3,23 +3,46 @@ package sample.Juego;
 import jdk.nashorn.internal.ir.CatchNode;
 import sample.Juego.Cartas.Carta;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Mano.
+ *
+ */
 public class Mano {
     private Carta first =null;
     private Carta last =null;
     private int size = 0;
 
+    /**
+     * Instantiates a new Mano.
+     */
     public Mano() {
         this.inicial();
     }
 
+    /**
+     * Gets first.
+     *
+     * @return the first
+     */
     public Carta getFirst() {
         return first;
     }
 
+    /**
+     * Gets size.
+     *
+     * @return the size
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * Gets last.
+     *
+     * @return the last
+     */
     public Carta getLast() {
         return last;
     }
@@ -60,6 +83,13 @@ public class Mano {
             }
         }
     }
+
+    /**
+     * Buscar carta.
+     *
+     * @param indice the indice
+     * @return the carta
+     */
     public Carta buscar(int indice){
         Carta current = this.first;
         for (int i = 0; i < this.size;i++){
@@ -73,6 +103,11 @@ public class Mano {
         return current;
     }
 
+    /**
+     * Add.
+     *
+     * @param carta the carta
+     */
     public void add(Carta carta){
         if (this.first == null){
             this.first = carta;
@@ -92,6 +127,12 @@ public class Mano {
 
 
     }
+
+    /**
+     * Remove.
+     *
+     * @param carta the carta
+     */
     public void remove(Carta carta){
         if(this.size == 1){
             carta.setNextMano(null);

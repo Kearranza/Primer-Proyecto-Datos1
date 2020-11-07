@@ -13,13 +13,36 @@ import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Cliente.
+ *
+ */
 public class Cliente implements Runnable{
 
+    /**
+     * The constant puerto.
+     */
     public static int puerto;
+    /**
+     * The Mensaje.
+     */
     public String mensaje;
     private boolean conectado;
+    /**
+     * The constant ip.
+     */
     public static String ip;
 
+    /**
+     * Instantiates a new Cliente.
+     *
+     * @param puerto  the puerto
+     * @param mensaje the mensaje
+     * @param carta   the carta
+     * @param ip      the ip
+     * @throws IOException the io exception
+     */
     public Cliente(int puerto, String mensaje, Carta carta, String ip) throws IOException {
         String[] components = mensaje.split("\\|");
         if (carta != null){
@@ -62,6 +85,11 @@ public class Cliente implements Runnable{
 
     }
 
+    /**
+     * Is conectado boolean.
+     *
+     * @return the boolean
+     */
     public boolean isConectado() {
         return conectado;
     }

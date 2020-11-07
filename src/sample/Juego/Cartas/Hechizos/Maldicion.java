@@ -6,7 +6,18 @@ import sample.Juego.Jugador;
 
 import java.io.IOException;
 
+/**
+ * @author Bryan Martínez y Kevin Carranza
+ * The type Maldicion.
+ *
+ */
 public class Maldicion extends Carta {
+    /**
+     * Instantiates a new Maldicion.
+     *
+     * @param coste  the coste
+     * @param imagen the imagen
+     */
     public Maldicion(int coste, String imagen) {
         super(coste, imagen, "H", false);
     }
