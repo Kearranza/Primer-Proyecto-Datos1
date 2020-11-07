@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Jugador.
- *
+ * Esta es la clase Jugador se encarga de llevar todos los datos relacionados al jugador
  */
 public class Jugador {
     /**
@@ -25,7 +25,6 @@ public class Jugador {
 
     /**
      * Get instance jugador.
-     *
      * @return the jugador
      */
     public static Jugador getInstance(){
@@ -56,7 +55,6 @@ public class Jugador {
 
     /**
      * Gets pv.
-     *
      * @return the pv
      */
     public int getPv() {
@@ -65,14 +63,12 @@ public class Jugador {
 
     /**
      * Sets pv.
-     *
      * @param pv the pv
      */
     public void setPv(int pv) { this.pv = pv; }
 
     /**
      * Gets mana.
-     *
      * @return the mana
      */
     public int getMana() {
@@ -81,7 +77,6 @@ public class Jugador {
 
     /**
      * Sets mana.
-     *
      * @param mana the mana
      */
     public void setMana(int mana) {
@@ -90,14 +85,12 @@ public class Jugador {
 
     /**
      * Gets mano.
-     *
      * @return the mano
      */
     public Mano getMano() { return this.mano; }
 
     /**
      * Gets mazo.
-     *
      * @return the mazo
      */
     public Mazo getMazo() {
@@ -106,7 +99,7 @@ public class Jugador {
 
     /**
      * Cambio vida.
-     *
+     * Se encarga de reducir o aumentar los pv del jugador segun se necesite
      * @param valor the valor
      */
     public void cambioVida(int valor){
@@ -123,7 +116,7 @@ public class Jugador {
 
     /**
      * Cambio mana.
-     *
+     * Se encarga de reducir o aumentar el mana del jugador segun se necesite
      * @param valor the valor
      */
     public void cambioMana(int valor){
@@ -138,6 +131,7 @@ public class Jugador {
 
     /**
      * Robar.
+     * Incorpora la carta del mazo a la mano
      */
     public void robar(){
         Carta robada = this.mazo.eliminar();
@@ -147,7 +141,7 @@ public class Jugador {
 
     /**
      * Invocar.
-     *
+     * Se encarga reducir el mana del jugarod actual y de enviar la carta al otro jugador
      * @param i the
      * @throws IOException the io exception
      */

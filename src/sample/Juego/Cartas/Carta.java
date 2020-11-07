@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Carta.
- *
+ * Esta es la clase Carta que se encarga de almacenar los datos de una carta
  */
 public class Carta {
     private Carta next = null;
@@ -23,7 +23,6 @@ public class Carta {
 
     /**
      * Instantiates a new Carta.
-     *
      * @param coste  the coste
      * @param imagen the imagen
      * @param tipo   the tipo
@@ -41,7 +40,6 @@ public class Carta {
 
     /**
      * Instantiates a new Carta.
-     *
      * @param next     the next
      * @param nextMano the next mano
      * @param prevMano the prev mano
@@ -65,7 +63,6 @@ public class Carta {
 
     /**
      * Gets nombre.
-     *
      * @return the nombre
      */
     public String getNombre() {
@@ -74,7 +71,6 @@ public class Carta {
 
     /**
      * Is favor boolean.
-     *
      * @return the boolean
      */
     public boolean isFavor() {
@@ -83,7 +79,6 @@ public class Carta {
 
     /**
      * Gets tipo.
-     *
      * @return the tipo
      */
     public String getTipo() {
@@ -92,7 +87,6 @@ public class Carta {
 
     /**
      * Sets tipo.
-     *
      * @param tipo the tipo
      */
     public void setTipo(String tipo) {
@@ -101,17 +95,14 @@ public class Carta {
 
     /**
      * Sets coste.
-     *
      * @param coste the coste
      */
+
     public void setCoste(int coste) {
         this.coste = coste;
     }
-
-
     /**
      * Gets next.
-     *
      * @return the next
      */
     public Carta getNext() {
@@ -120,7 +111,6 @@ public class Carta {
 
     /**
      * Sets next.
-     *
      * @param next the next
      */
     public void setNext(Carta next) {
@@ -129,7 +119,6 @@ public class Carta {
 
     /**
      * Gets imagen.
-     *
      * @return the imagen
      */
     public String getImagen() {
@@ -138,7 +127,6 @@ public class Carta {
 
     /**
      * Sets imagen.
-     *
      * @param imagen the imagen
      */
     public void setImagen(String imagen) {
@@ -147,7 +135,6 @@ public class Carta {
 
     /**
      * Gets coste.
-     *
      * @return the coste
      */
     public int getCoste() {
@@ -156,7 +143,6 @@ public class Carta {
 
     /**
      * Gets next mano.
-     *
      * @return the next mano
      */
     public Carta getNextMano() {
@@ -165,7 +151,6 @@ public class Carta {
 
     /**
      * Sets next mano.
-     *
      * @param nextMano the next mano
      */
     public void setNextMano(Carta nextMano) {
@@ -174,7 +159,6 @@ public class Carta {
 
     /**
      * Gets prev mano.
-     *
      * @return the prev mano
      */
     public Carta getPrevMano() {
@@ -183,7 +167,6 @@ public class Carta {
 
     /**
      * Sets prev mano.
-     *
      * @param prevMano the prev mano
      */
     public void setPrevMano(Carta prevMano) {
@@ -192,7 +175,7 @@ public class Carta {
 
     /**
      * Accion.
-     *
+     * Se encarga de realizar la acción dependiendo la carta
      * @throws IOException the io exception
      */
     public void accion() throws IOException {

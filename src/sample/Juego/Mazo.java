@@ -5,7 +5,7 @@ import sample.Juego.Cartas.Carta;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Mazo.
- *
+ * Esta es la clase Mazo que funciona como una pila.
  */
 public class Mazo {
     private int top = -1;
@@ -14,7 +14,6 @@ public class Mazo {
 
     /**
      * Instantiates a new Mazo.
-     *
      * @param mano the mano
      */
     public Mazo(Mano mano) {
@@ -22,6 +21,9 @@ public class Mazo {
         this.inicial(mano);
     }
 
+    /** Inicial
+     * Se encarga de llenar de Cartas el Mazo.
+     */
     private void inicial(Mano mano) {
         Carta current = mano.getFirst();
         int i = 0;
@@ -35,7 +37,7 @@ public class Mazo {
 
     /**
      * Eliminar carta.
-     *
+     * Se encarga de retornar la carta del tope.
      * @return the carta
      */
     public Carta eliminar(){

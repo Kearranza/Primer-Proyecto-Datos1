@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Curacion.
- *
+ * Esta es la clase Curacion que se encarga de almacenar los datos de una carta de este tipo(Clase hija de Carta).
  */
 public class Curacion extends Carta {
     /**
@@ -21,7 +21,7 @@ public class Curacion extends Carta {
     public Curacion(int coste, String imagen) {
         super(coste, imagen, "H", true);
     }
-
+    @Override
     public void accion() throws IOException {
         Jugador.getInstance().cambioVida(20);
         Cliente c = new Cliente(Cliente.puerto, "vida"+"|"+ "20", null, Cliente.ip);

@@ -17,7 +17,7 @@ import sample.Juego.Mazo;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Monster tecg.
- *
+ * Esta es la clase main MonsterTECG, que se encarga de iniciar el juego.
  */
 public class MonsterTECG extends Application {
 

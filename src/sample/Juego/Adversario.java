@@ -3,7 +3,7 @@ package sample.Juego;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Adversario.
- *
+ * Esta es la clase Adversario que se encarga de llevar los datos del Adversario
  */
 public class Adversario {
     /**
@@ -15,7 +15,6 @@ public class Adversario {
 
     /**
      * Get instance adversario.
-     *
      * @return the adversario
      */
     public static Adversario getInstance(){
@@ -27,35 +26,31 @@ public class Adversario {
 
     /**
      * Sets pv.
-     *
      * @param pv the pv
      */
     public void setPv(int pv) { this.pv = pv;}
 
     /**
      * Sets mana.
-     *
      * @param mana the mana
      */
     public void setMana(int mana) { this.mana = mana; }
 
     /**
      * Gets pv.
-     *
      * @return the pv
      */
     public int getPv() { return this.pv; }
 
     /**
      * Gets mana.
-     *
      * @return the mana
      */
     public int getMana() { return this.mana; }
 
     /**
      * Cambio vida.
-     *
+     * Se encarga de reducir o aumentar los pv del adversario segun se necesite
      * @param valor the valor
      */
     public void cambioVida(int valor){
@@ -72,7 +67,7 @@ public class Adversario {
 
     /**
      * Cambio mana.
-     *
+     * Se encarga de reducir o aumentar el mana del adversario segun se necesite
      * @param valor the valor
      */
     public void cambioMana(int valor){

@@ -8,14 +8,13 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Esbirro.
- *
+ * Esta es la clase Esbirro que se encarga de almacenar los datos de una carta de este tipo(Clase hija de Carta).
  */
 public class Esbirro extends Carta {
     private int ataque;
 
     /**
      * Instantiates a new Esbirro.
-     *
      * @param coste  the coste
      * @param imagen the imagen
      * @param ataque the ataque
@@ -27,13 +26,16 @@ public class Esbirro extends Carta {
 
     /**
      * Gets ataque.
-     *
      * @return the ataque
      */
     public int getAtaque() {
         return ataque;
     }
-
+    /**
+     * Accion.
+     * Se encarga de reducir la vida del jugador en base al ataque de la carta.
+     * @throws IOException the io exception
+     */
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.cambioVida(-this.ataque);

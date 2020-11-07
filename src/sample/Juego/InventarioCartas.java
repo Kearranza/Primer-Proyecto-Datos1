@@ -8,7 +8,7 @@ import sample.Juego.Cartas.Secretos.*;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Inventario cartas.
- *
+ * Esta es la clase inventario que funciona como una lista simple que contiene una instancia de todas las cartas el juego
  */
 public class InventarioCartas {
     /**
@@ -20,7 +20,6 @@ public class InventarioCartas {
 
     /**
      * Get instance inventario cartas.
-     *
      * @return the inventario cartas
      */
     public static InventarioCartas getInstance(){
@@ -119,7 +118,7 @@ public class InventarioCartas {
 
     /**
      * Buscar carta.
-     *
+     * Se encarga de buscar una carta igual en la posición dada.
      * @param valor the valor
      * @return the carta
      */
@@ -136,7 +135,7 @@ public class InventarioCartas {
 
     /**
      * Buscar imagen object.
-     *
+     * Se encarga de buscar la imagen de una carta que concuerde con el string dado
      * @param imagen the imagen
      * @return the object
      */

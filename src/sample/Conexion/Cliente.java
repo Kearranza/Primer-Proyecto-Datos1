@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Cliente.
- *
+ * Esta es la Clase cliente la cual se encarga de comunicarse con el servidor.
  */
 public class Cliente implements Runnable{
 
@@ -36,7 +36,6 @@ public class Cliente implements Runnable{
 
     /**
      * Instantiates a new Cliente.
-     *
      * @param puerto  the puerto
      * @param mensaje the mensaje
      * @param carta   the carta
@@ -87,7 +86,6 @@ public class Cliente implements Runnable{
 
     /**
      * Is conectado boolean.
-     *
      * @return the boolean
      */
     public boolean isConectado() {

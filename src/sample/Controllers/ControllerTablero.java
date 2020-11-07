@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Controller tablero.
- *
+ * Esta es la clase ControllerTablero que se encarga de controlar lo que sucede en Tablero.fxml
  */
 public class ControllerTablero implements Initializable {
     private static boolean jugable;
@@ -58,7 +58,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Sets acciones.
-     *
      * @param acciones the acciones
      */
     public static void setAcciones(String acciones) {
@@ -67,7 +66,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Gets acciones.
-     *
      * @return the acciones
      */
     public static String getAcciones() {
@@ -76,7 +74,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Gets gratis.
-     *
      * @return the gratis
      */
     public static int getGratis() {
@@ -85,7 +82,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Sets gratis.
-     *
      * @param gratis the gratis
      */
     public static void setGratis(int gratis) {
@@ -94,7 +90,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Sets congelado.
-     *
      * @param congelado the congelado
      */
     public static void setCongelado(boolean congelado) {
@@ -109,7 +104,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Terminar turno.
-     *
+     * Al detectar el click del boton juego se encargar de resetear valores su valor predefinido, cambiar el turno y robar carta.
      * @throws IOException the io exception
      */
     @FXML
@@ -129,6 +124,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Robo gui.
+     * Se encarga de la animación y acción de robar una carta.
      */
     public void roboGUI(){
         Jugador jugador = Jugador.getInstance();
@@ -150,7 +146,6 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Sets jugable.
-     *
      * @param cambio the cambio
      */
     public static void setJugable(boolean cambio) { jugable = cambio; }
@@ -162,6 +157,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Update.
+     * Se encarga de actualizar continuamente lo que se enceuntra en labels y el textArea historial.
      */
     @FXML
     public void update(){
@@ -176,6 +172,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 1.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview1() {
         if (jugable){ CartaPreview.setImage(Carta1.getImage()); }
@@ -183,6 +180,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 2.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview2() {
         if (jugable){ CartaPreview.setImage(Carta2.getImage()); }
@@ -190,6 +188,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 3.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview3() {
         if (jugable){ CartaPreview.setImage(Carta3.getImage()); }
@@ -197,6 +196,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 4.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview4() {
         if (jugable){ CartaPreview.setImage(Carta4.getImage()); }
@@ -204,6 +204,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 5.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview5() {
         if (jugable){ CartaPreview.setImage(Carta5.getImage()); }
@@ -211,6 +212,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 6.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview6() {
         if (jugable){ CartaPreview.setImage(Carta6.getImage()); }
@@ -218,6 +220,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 7.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview7() {
         if (jugable){ CartaPreview.setImage(Carta7.getImage()); }
@@ -225,6 +228,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 8.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview8() {
         if (jugable){ CartaPreview.setImage(Carta8.getImage()); }
@@ -232,6 +236,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 9.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview9() {
         if (jugable){ CartaPreview.setImage(Carta9.getImage()); }
@@ -239,6 +244,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Preview 10.
+     * Muestra una vista previa de la imagen antes de ser seleccionada.
      */
     public void preview10() {
         if (jugable){ CartaPreview.setImage(Carta10.getImage()); }
@@ -246,6 +252,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Exit.
+     * Se encarga de quitar la vista previa de las imagenes.
      */
     public void exit() {
         if (jugable){ CartaPreview.setImage(null); }
@@ -253,7 +260,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 1.
-     *
+     * Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     @FXML
@@ -289,7 +296,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 2.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion2() throws IOException {
@@ -324,7 +331,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 3.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion3() throws IOException {
@@ -359,7 +366,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 4.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion4() throws IOException {
@@ -394,7 +401,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 5.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion5() throws IOException {
@@ -429,7 +436,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 6.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion6() throws IOException {
@@ -464,7 +471,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 7.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion7() throws IOException {
@@ -499,7 +506,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 8.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion8() throws IOException {
@@ -534,7 +541,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 9.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion9() throws IOException {
@@ -569,7 +576,7 @@ public class ControllerTablero implements Initializable {
 
     /**
      * Invocacion 10.
-     *
+     *Se encarga de comprobar la carte seleccionada y verificar si puede ser usada para luego enviar la carta seleccionada al rival.
      * @throws IOException the io exception
      */
     public void invocacion10() throws IOException {

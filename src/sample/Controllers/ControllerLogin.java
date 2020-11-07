@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Controller login.
- *
+ * Esta es la clase ControllerLogin que se encarga de controlar lo que sucede en Login.fxml
  */
 public class ControllerLogin implements Initializable {
     @FXML
@@ -33,7 +33,7 @@ public class ControllerLogin implements Initializable {
 
     /**
      * Click host.
-     *
+     * Cuando se da click en el boton host se encarga de levantar un servidor con el port dado.
      * @param event the event
      * @throws IOException the io exception
      */
@@ -87,7 +87,7 @@ public class ControllerLogin implements Initializable {
 
     /**
      * Click unirse.
-     *
+     * Cuando se da click en el boton unirse se encarga de conectarse a un servidor con el port dado y brindando un port propio e ip.
      * @param event the event
      * @throws IOException the io exception
      */

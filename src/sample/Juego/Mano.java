@@ -6,7 +6,7 @@ import sample.Juego.Cartas.Carta;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Mano.
- *
+ * Esta es la clase Mano que funciona como una lista circular
  */
 public class Mano {
     private Carta first =null;
@@ -22,7 +22,6 @@ public class Mano {
 
     /**
      * Gets first.
-     *
      * @return the first
      */
     public Carta getFirst() {
@@ -31,7 +30,6 @@ public class Mano {
 
     /**
      * Gets size.
-     *
      * @return the size
      */
     public int getSize() {
@@ -40,13 +38,14 @@ public class Mano {
 
     /**
      * Gets last.
-     *
      * @return the last
      */
     public Carta getLast() {
         return last;
     }
-
+    /** Inicial
+     * Se encarga de llenar el mazo y la mano con cartas aleatorias.
+     */
     private void inicial(){
 
         int valorAleatorio = (int)Math.floor(Math.random()*40);
@@ -86,7 +85,7 @@ public class Mano {
 
     /**
      * Buscar carta.
-     *
+     * Se encarga de buscar una carta en cierta posición con un int dado.
      * @param indice the indice
      * @return the carta
      */
@@ -105,7 +104,7 @@ public class Mano {
 
     /**
      * Add.
-     *
+     * Se encarga de añadir una carta dada a la mano.
      * @param carta the carta
      */
     public void add(Carta carta){
@@ -130,7 +129,7 @@ public class Mano {
 
     /**
      * Remove.
-     *
+     * Se encarga de remover una carta dada de la mano.
      * @param carta the carta
      */
     public void remove(Carta carta){

@@ -10,19 +10,18 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Sacrificio sangre.
- *
+ *Esta es la clase SancrifioSangre que se encarga de almacenar los datos de una carta de este tipo(Clase hija de Carta).
  */
 public class SacrificioSangre extends Carta {
     /**
      * Instantiates a new Sacrificio sangre.
-     *
      * @param coste  the coste
      * @param imagen the imagen
      */
     public SacrificioSangre(int coste, String imagen) {
         super(coste, imagen,"H", true);
     }
-
+    @Override
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.cambioVida(-10);

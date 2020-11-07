@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Servidor.
- *
+ * Esta es la clase Servidor que se encarga de recibir los mensajes de la clase cliente.
  */
 public class Servidor extends Observable implements Runnable{
 
@@ -37,7 +37,6 @@ public class Servidor extends Observable implements Runnable{
 
     /**
      * Instantiates a new Servidor.
-     *
      * @param puerto the puerto
      */
     public Servidor(int puerto){
@@ -52,7 +51,6 @@ public class Servidor extends Observable implements Runnable{
 
     /**
      * Is conectado boolean.
-     *
      * @return the boolean
      */
     public boolean isConectado() {
@@ -61,7 +59,6 @@ public class Servidor extends Observable implements Runnable{
 
     /**
      * Is ocupado boolean.
-     *
      * @return the boolean
      */
     public boolean isOcupado() {
@@ -70,7 +67,6 @@ public class Servidor extends Observable implements Runnable{
 
     /**
      * Sets ocupado.
-     *
      * @param ocupado the ocupado
      */
     public void setOcupado(boolean ocupado) {

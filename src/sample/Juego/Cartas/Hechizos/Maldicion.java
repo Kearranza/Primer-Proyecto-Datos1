@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * @author Bryan Martínez y Kevin Carranza
  * The type Maldicion.
- *
+ *Esta es la clase Maldicion que se encarga de almacenar los datos de una carta de este tipo(Clase hija de Carta).
  */
 public class Maldicion extends Carta {
     /**
@@ -21,7 +21,7 @@ public class Maldicion extends Carta {
     public Maldicion(int coste, String imagen) {
         super(coste, imagen, "H", false);
     }
-
+    @Override
     public void accion() throws IOException {
         Jugador jugador = Jugador.getInstance();
         jugador.cambioVida(-(jugador.getMano().getSize())*10);
